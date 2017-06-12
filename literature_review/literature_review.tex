@@ -2,8 +2,566 @@
 
 \chapter{Literature review}
 
-This is an example paragraph. As you can see, the main text uses a font size of 12 pt and a line spacing of 1.5. Neither the paragraphs nor the first lines of paragraphs should be indented.
+	\section{agmon1995functional }
+	\section{barthelemy2001figured }
+	The model from barthelemy uses the figured bass as the type of harmonic analysis basis.
 
-There is no very strict page limit. Your number of pages will be strongly influenced by the size and total number of your figures and tables. It is recommended staying within 30-50 pages. Do not try to fill as many pages as you can. Longer theses are not necessarily of higher quality and of more non-redundant content than shorter theses. Certainly, a master thesis of 15 pages is too short, and a master thesis of 100 pages is too long. Also, here you can see a sample reference \cite{rodriguez2005bilateral}
+	\subsection{Literature review}
+		maxwell1992expert system has more than 50 rules. Reducing the vertical sonorities into a chord sequience, then deciding for key changes. The decision rules from this model are very difficult to adapt, and it has difficulty dealing with harmonic notes that are not presented vertically but horizontally.
+
+		winograd1968linguistics approach requires a preliminary hand-made conversion of the original score and turn it into a sequence of four-part perfect chords. This means that during this stage non-harmonic tones are eliminated.
+
+		The system from ulrich1977analysis developed a functional analysis, identifying the function of each chord in a musical piece. The input for this model was also a sequence of chords and it incorporated the detection of keys.
+
+		pachet2000computer approach is an extension to the work of ulrich1977analysis, input is similarly a sequence of chords. It outputs a hierarchical description of modulations.
+
+	barthelemy2001figured divides the problem of harmonic analysis in four fundamental issues:
+	\subsection{Ornamental notes and incomplete harmony}
+			Ornamental notes to be considered include: appoggiaturas, suspensions, passing tones, among others.
+			Harmony is in many times stated incomplete, meaning it lacks a number of notes from the chord function that the span of music implies, and algorithms have to deal with this problem.
+	\subsection{Ambiguities}
+			Sometimes a \emph{false} harmonic function could appear to be the answer, but this should be addressed by understanding the context of the music.
+	\subsection{Non-regularity of harmony}
+			The rhythm in harmony is irregular. It cannot be assumed to be constant at any moment of the analysis.
+	\subsection{Non-universality of harmony rules}
+			Music theory is very ambiguous, is full of exceptions and decisions that should be made in judgement of the analyst.
+	\subsection{Description of harmonic reduction}
+	\subsection{Evaluation}
+		The system does not consider pedal notes. Also, other ornamental notes that are followed not by conjunct movement but skips are also not detected.
+
+		There are problems taking the context into account, but the resolution of ambiguities is still incomplete.
+
+		It will also fail in a very simple sample where melodic imitation indicates a reexposition, easily recognizable by humans, but difficult to solve with this approach.
+
+		barthelemy2001figured compare their results to those of maxwell1992expert, pardo2000automated and temperley1997algorithm. All the samples have better analysis for certain measures and drawback analyses for others.
+	\subsection{My Comments}
+		\emph{\textbf{
+			The approach from barthelemy2001figured is the first approach that I have seen considering a figured bass as the output goal for the algorithm. The results seem quite close to those obtained by other algorithms. Also, it shares some of the corner-cases that have not been solved by other approaches.
+		}}
+
+	\section{beach1974origins }
+	\section{cambouropoulos2014idiom }
+		Proposes an idiom-independent representation approach for chord types, based in the General Chord Type (GCT) representation.
+
+		The GCT is a more general version of the roman numeral labeling. The system uses a consonance-dissonance classification of intervals and a scale to find the maximal subset of consonant notes out of a note simultaneity.
+
+		cambouropoulos2014idiom claim that this model is useful for tonal music, but also for atonal music and other music traditions.
+
+		The samples used to test the model come from diverse musical idioms.
+
+		The idea pursued by cambouropoulos2014idiom with the GCT is to find a "universal" chord representation that given some fundamental features about the idiom could classify and encode pitch simultaneities.
+
+		In this model, cambouropoulos2014idiom try to label chords within a given key, therefore, it is assumed that there is a full harmonic reduction available in advance as input for the model.
+
+		The model receives as input three things:
+		\begin{itemize}
+			\item Consonance Vector, which consists of 12 boolean values indicating whether a particular interval should be considered consonant or dissonant
+			\item Pitch Scale Hierarchy, which maps the equivalent to a scale, consists of a tonic and a set of scale tones
+			\item Input Chord, list of midi notes converted to pc-set
+		\end{itemize}
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				This GCT model is intended as a universal classification of chord simultaneities (verticals) according to the idiom that is trying to model. It does not the complex and specific scenarios of tonal music because it is not designed for that.
+			}}
+
+	\section{chemillier2004toward }
+	\section{choi2011jazz }
+	\section{cohn1998introduction }
+	\section{conklin2002representation }
+	\section{de2013automatic }
+		Takes as input a sequence of symbolic chord labels and outputs the harmonic relations between chords.
+
+		Lies in the ideas from rohrmeier2008statistical and rohrmeier2011towards. The code is binded to the Haskell language.
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				This work is basically an implementation over the ideas discussed by Rohrmeier in rohrmeier2011towards. Using Haskell and chord labels as inputs.
+			}}
+	\section{devaney2015theme }
+		This paper describes a corpus of 27 piano theme and variations, 10 from Mozart and 17 from Beethoven. Autors claim to have been analyzed with roman numerals by two different experts. The format of the corpus is that of **kern spines.
+
+		The files were taken originally from MIDI files, converted into **kern spines and manually corrected according to certain score editions found in the Petrucci Library (IMSLP).
+
+		The harmonic analysis annotations were done using  **harm spines. An additional spine was included to denote the function of the chords, this spine was called **func. Therefore, each file consists of a set of **kern spines, a **harm spine of the harmonic analysis and a **func spine denoting the function of the chords.
+
+		The corpus is available here: https://github.com/jcdevaney/TAVERN
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				This is a very interesting corpus for this research, because it uses a similar format than the one we are using, i.e., **kern spines with **harm spines for the harmonic analysis, additionally, it provides the analysis from two different (expert) encoders, which gives more than one correct analysis for every single music score in the corpus. UPDATE: I checked the corpus, tho this work was published in 2015, the files were added to github during 2017. The harmonic analysis encodings are not annotated as **harm spines but rather as a **chords spine. It seems it is consistent with the syntax of **harm except for the notation for inversions, which is not using letters (a,b,c) as the **harm syntax defines. One important drawback in the use of this corpus for our research is the fact that these works are piano works, which represent a very different melodic seggregation than a string quartet.
+			}}
+	\section{ewert2012towards }
+		\subsection{My Comments}
+			\emph{\textbf{
+				This paper describes a cross-version analysis from audio and symbolic (midi and score) representations of music. One example of this kind of analysis would be to evaluate MIDI-based chord labeling procedures using annotations given to audio recordings. The main effort of this work relies in the alignment of audio and symbolic content. Chord labeling is the analysis domain ewert2012towards use for testing. Melisma is used as their symbolic chord-labeling system.
+			}}
+	\section{granroth2013harmonic }
+		Takes into account the previous effort of probabilistic models and focuses in the use of statistical parsing techniques to compute harmonic analysis in music.
+
+		This model is an adaptation of Natural Language Processing techniques. Combinatory Categorial Grammar (CCG) used to parse chord sequences into a hierarchical structure.
+
+		The model is applied in a jazz chord sequences corpus, annotated by hand.
+
+		Devotes the review to the approaches that analyze music cognition using grammars.
+
+		Based on the work from Steedman.
+
+		\subsection{About jackendoff1985generative}
+			Divide their analysis with two structures: grouping structure, which represents the hierarchical segmentation of the music into phrases; and metrical structure, which represents the organization of rhythm to align with a metrical grid.
+
+			There are two further structures: time-span reduction, denoting the relative structural importance of notes, and prolongation reduction, which is a structure of tension and resolution in melody.
+
+			The most fundamental departure from Keiler, Steedman and Rohrmeir from jackendoff1985generative is that their exclusively dealing with harmonic relationships between the chords and tonal regions.
+
+		\subsection{About raphael2004functional}
+			Concerned with analysis of Western Classical Music, i.e., Haydn.
+
+			granroth2013harmonic made analysis using similar examples to those of raphael2004functional, it seems the original samples used by raphael2004functional are not available.
+
+			raphael2004functional do not present an empirical evaluation of their model due to the difficulty of judging a harmonic intepretation, they instead provide examples of different good analyses produced.
+
+		\subsection{About temperley1999modeling}
+			Temperley discards time-span reduction and prolongation reduction from GTTM.
+
+			Temperley's model does not consider the problems of structured relationships between chords and long-distance dependencies between chords, together with hierarchical structure.
+
+			granroth2013harmonic classifies the works of ulrich1977analysis and pardo2002algorithms as approaches that output an unstructured sequence of segments labelled with chord names, and approaches from raphael2004functional and temperley2009unified as the ones concerned with roman numeral analysis.
+
+		\subsection{About rohrmeier2011towards}
+			New contributions from this work are grammatical rules demonstrated to be capable of interpreting a wide range of musical inputs. Rohrmeier does not extend the grammatical analysis to higher levels of structure, because he claims that higher-level structure should be viewed as a separate study than harmonic structure.
+
+			Rohrmeier is based in the functional chord analysis of Riemann. The lowest level of the representation of a chord being a roman numeral scale degree in relation to the current key. At this level the analysis resembles that of raphael2004functional. The following level, function level, formulates a recursive structure of domninant, subdominant and tonic regions as a phrase-structure-grammar. Regions have a function related to a larger region. In the highest level, phrase level, regions analyzed as recursive functional are combined in sequence into a single tree that interprets the whole piece.
+
+			The Combinatory Categorial Grammar (CCG), is a grammar formalism that maps natural language sentences into logical representation of their semantics.
+
+			In conclusion to the literature review, granroth2013harmonic continues the work done in formal grammars modelling to estimate a harmonic analysis.
+
+		\subsection{Corpus}
+			The corpus constructed for this work is a series of annotated jazz chord sequences. granroth2013harmonic decided to use his own dataset instead of the existing ones, e.g.:, kostka-payne or the bach-corales from sapp2007computational.
+
+			The corpus from granroth2013harmonic consists of 76 annotated sequences totalling approximately 3000 chords.
+
+			The corpus is here:\newline
+			\url{http://jazzparser.granroth-wilding.co.uk/attachments/JazzCorpus/chord_corpus.txt}
+
+		\subsection{Note-level performance data}
+			granroth2013harmonic tries to prove that his approach also works for analyzing performance-level information. Therfore, incorporates a set of approximately 350 midi files.
+
+			In his second-year review granroth2013harmonic considers to use a similar approach to raphael2004functional to the problem of giving a harmonic parsing of a stream of notes, into a midi supertagger. This midi supertagger considers metronomic input files.
+
+		\subsection{My Comments}
+			\emph{\textbf{Looking at the corpus and the review from granroth2013harmonic, I realize he parts from the chord labeling step already done. The purpose of this research is to structure the hierarchies of chords, not to deal with the ambiguity of non-harmonic tones and other problems that arise from polyphonic music scores, as in the case of a string quartet. I am not concerned of long-term relationships of chords and overall hierarchy, but in more immediate regions and harmonic contexts, which is a lower-level step in the harmonic analysis.
+			}}
+			\emph{\textbf{UPDATE: granroth2013harmonic did perform experiments in which he used a midi supertagger to try to come with the hierarchical representation out from a stream of midi notes as the input. This is described as a critical step in full harmonic analysis, however, in the final thesis document, it is presented as a preliminary exploration of parsing a stream of notes and suggestions on future work.}}
+
+	\section{harte2005symbolic }
+		This paper presents a text representation of musical chord symbols intended to be used for annotating and labeling chords in music files.
+		There are different styles of notations:
+		\begin{itemize}
+			\item Figured bass
+			\item Classical roman numeral
+			\item Classical letter
+			\item Typical popular music
+			\item Typical jazz notation
+		\end{itemize}
+		The basic form of this representation is: \emph{<root>:(<intervals_1_to_13>)/<bass>}. It allows for a shorthand representation of common chords as well.
+		\subsection{My Comments}
+			\emph{\textbf{
+				This representation is pretty simple and easy to parse by computers, the problem adopting it for this research is the fact that functional information is lost, as well as the tracking of the harmonic context, which is very important in classical music. Hence, the syntax adopted will remain to be the **harm syntax for humdrum.
+			}}
+	\section{hoffman2000constraint }
+	\section{illescas2007harmonic }
+		The approach from illescas2007harmonic is divided in the following steps: melodic analysis of harmonic and non-harmonic tones, vertical harmonic analysis, tonality and tonal functions. Afterwards, that information is represented as a weighted directed acyclic graph. The best path is the longest path.
+		\subsection{Melodic Analysis}
+			During this stage, notes are tagged as either harmonic or non-harmonic to the current harmony. These tags do not consider any harmonic information but pure melodic movement.
+			In total, there are 38 different rules. The type of non-harmonic tones summarized in the paper includes: appogiaturas, suspensions, passing tones and neighbor tones.
+		\subsection{Vertical Analysis}
+			The vertical analysis consists in segmenting each bar in the piece to a number of time windows, gathering all the possible chords from each window.
+		\subsection{Tonal Analysis}
+			During this step, one of the 24 tonalities is selected as the central key for a window, given the accidentals in it.
+		\subsection{Functional Analysis}
+			This step constructs the directed acyclic graph, based on the chords and tonalities for each window. Each layer represents a window, and the nodes represent chords with tonal functions in a tonality. The edges contain valide progressions between nodes in successive layers. The final step is to find the best path and output the roman numeral analysis of the piece.
+		\subsection{My Comments}
+			\emph{\textbf{
+				This is the first work that I find considering a MusicXML input, and using the pitch-spelling information to model important characteristics of the music, in the case of illescas2007harmonic, they use this information to compute the tags of harmonic and non-harmonic tones. The approach seems similar to pardo2000automated in terms of the data structure used to represent the analysis, however, it is not based in template-matching, but a more rule-based approach. In this sense, it seems to me in a certain extent to the combination of different harmonic analysis approaches. UPDATE: I requested the source code of this algorithm to the University of Alicante, and they said its implementation is not publicly available because they are rewriting the code. They mention this would take some months to finish. They offered me to pack a binary of the implementation used in the paper and hand it to me in two weeks.
+			}}
+
+
+	\section{isaacson2005you }
+	\section{jackendoff1985generative }
+	\section{jacoby2015information }
+	\section{kaliakatsos2015evaluating }
+	\section{kostka1995tonal }
+	\section{kroger2008rameau }
+		The idea of "Rameau" is to provide a framework for automatic harmonic analysis. The authors claim that they have performed an evaluation of ten algorithms in a corpus of 140 Bach chorales with it.
+
+		The visualization website of the framework is down, but the git repository is available in github. From the ten algorithms shown in the picture, pardo2002algorithms and temperley1997algorithm can be observed.
+
+		There are plans to incorporate the corpus from kostka-payne, however, this is not done yet.
+
+		\subsection{My Comments}
+		\emph{\textbf{
+			This is a very good effort. The language and environment do not seem very friendly, but it seems a lot of work has been put to it already. Currently, from previous harmonic analysis algorithms, only pardo2002algorithms and temperley1997algorithm seem to be implemented. maxwell1992expert, ulrich1977analysis and raphael2003harmonic are planned to be incorporated.
+		}}
+	\section{krumhansl2001cognitive }
+	\section{malandrino2015color }
+		\subsection{My Comments}
+			\emph{\textbf{
+				This is the closest work to the visualization problem to be addressed during this research, it considers keys and functions in order to map harmonic analysis to a palette of colors. Basic colors represent the three tonal functions (tonic, dominant, subdominant) and a color circle maps the keys. The final visualization seems improvable but considers both dimensions of harmony in the display of the colors.
+			}}
+	\section{mardirossian2007visualizing }
+	\section{maxwell1992expert }
+	\section{mearns2013computational }
+	\section{pachet2000computer }
+		In this work, pachet2000computer presents and criticizes the work from maxwell1992expert, ulrich1977analysis and Steedman.
+		\subsection{My Comments}
+			\emph{\textbf{
+				In this work, pachet2000computer presents a hierarchical model to analyze jazz harmonic progressions. This model has been very relevant for future work in Jazz harmonic analysis. It does not consider voice-leading and lands in the more "hierarchical" type of analysis, which give structure to a set of chord labels.
+			}}
+	\section{pardo2000automated }
+		This paper describes the partitioning in segments and minimal segments used by pardo2000automated in their chord labeling algorithm.
+		\subsection{Comparison to Temperley and Sleator}
+			The algorithm from pardo2000automated is compared against the harmony program of temperley1997algorithm in the measures 1-8 of the Sonata Pathetique by L. van Beethoven, the results seem pretty similar. The obvious extension to the output from temperley1997algorithm is the labeling of the chords.
+		\subsection{My Comments}
+			\emph{\textbf{
+				This is pretty similar to the document published two years later (pardo2002algorithms), except that it only describes the algorithm briefly. Something that might be different here are a set of preference rules for chords, describing the following: Prefere major over minor triads, minor triads over major-minor 7th, major-minor 7th over diminished, diminished over augmented and prefer lower pitch-class numbers.
+			}}
+	\section{pardo2001chordal }
+	\section{pardo2002algorithms }
+	\section{passos2009functional }
+		\subsection{My Comments}
+		\emph{\textbf{
+			Overview of kroger2008rameau and its results. Regarding functional harmonic analysis, four different algorithms from the framework perform roman numeral functional analysis.
+		}}
+	\section{pople2004using }
+		\subsection{My Comments}
+			\emph{\textbf{
+				Sort of long document (43 pages), not relevant references since published in 2004. Discarding due to little relevance. Describes the work in a software package called "tonalities".
+			}
+		}
+	\section{quinn2010pitch }
+		\subsection{My Comments}
+			\emph{\textbf{
+				A statistical approach over a Bach chorale corpus, similar to rohrmeier2008statistical. Followed by the discussion of a key finding algorithm.
+			}}
+	\section{quinn2011voice }
+		\subsection{My Comments}
+			Work of clustering of voice leading properties for comparison between the voice leading of a modal and tonal corpus.
+		}}
+	\section{radicioni2010breve }
+		Based on a HMPerceptron. Takes MIDI as input. It is not really clear what is the available chord dictionary as output from the algorithm, but it seems it is major and minor triads. The algorithm is tested in a corpus of 60 Bach Chorales.
+		\subsection{My Comments}
+			\emph{\textbf{
+				This approach takes MIDI as input. One of its highlights is the low cost computing achieved by running the CarpaeDiem algorithm in reducing the number of possible chord labels. The results in terms of harmonic analysis are not novell.
+			}}
+
+	\section{raphael2003harmonic }
+		The model of raphael2003harmonic labels music segments with key, mode and functional chord. The algorithm is based in a hidden Markov model which is automatically trainable from MIDI files and generates harmonic labels for the entire file.
+
+		The musical analysis used here is functional harmonic analysis. This approach is a statistical approach. One of the biggest strengths of this model is its capacity to operate unsupervised.
+
+		The work is in principle similar to krumhansl2001cognitive, differentiating from it in the sense that it extracts \emph{chord and key}. raphael2003harmonic also take into account the rhythmic content of the music as temperley1999modeling does in his approach.
+
+
+
+		\subsection{About barthelemy2001figured}
+			According to raphael2003harmonic, barthelemy2001figured overviews the variety of approaches to harmonic analysis, most of them being rule-based.
+
+			The disadvantages of rule-based approaches, according to raphael2003harmonic are these:
+			\begin{itemize}
+				\item They fail to articulate any measure of goodness of their proposed analysis
+				\item They balance each decision on the shoulders of previous decisions and therefore, propagate errors forward.
+			\end{itemize}
+
+		\subsection{Model}
+			The harmonic analysis of raphael2003harmonic is based on pitch and rhythm.
+
+			The harmonic analysis is done for any fixed musical segment of a determined length q (measure=1, half-measure=1/2). The pitches of the musical score are organized in subsets Yn, where every subset represents the collection of pitches that lie within the length of one unit 'q'.
+
+			The model from raphael2003harmonic considers only \emph{pitch classes}, therefore, they get rid of pitch-spelling information.
+
+			The goal of the algorithm is to associate a collection Yn of pitches to a key and a chord that describes the harmonic function. The notation for this association is the following:
+			\begin{itemize}
+				\item (tonic, mode, degree)
+				\item tonic={0,...,11}, mode={major,minor}, degree={I,...,VII}
+			\end{itemize}
+
+			The model from raphael2003harmonic is agnostic to secondary function and modulation, it treats every secondary function as a modulation.
+
+			The model can be trained unsupervised from any MIDI collection that states pitch and duration (mostly all MIDI streams except performance ones)
+
+			The link for the materials of this research is broken: \url{http://fafner.math.umass.edu/ismir03}. UPDATE: I found some materials about this research on Christopher Raphael's website at Indiana University Bloomington. This is the website: \url{http://music.informatics.indiana.edu/courses/I546/}
+
+			The samples from raphael2003harmonic do not include fully diminished 7th chords, neither Neapolitan chords or augmented sixths.
+
+		\subsection{Extending the model}
+			The model does not consider stream seggregation, which according to raphael2003harmonic is very important and should be considered if analyzing real music.
+
+			The next stage for this algorithm is to consider Yn as a collection of pitch classes, but this time corresponding to a single voice.
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				This model is one of the few pure-functional harmonic analysis approaches, oriented towards the analysis of common-practice music. The idea is simple and the arbitrary assumptions simplify the parameters of the model.
+			}}
+			\emph{\textbf{
+				Some constant that remains as in previous models is the fact that it gets rid of all the pitch-spelling information and replaced for solely pitch information. This model, unlike Temperley, does not try to reconstruct the pitch spelling information back by any algorithmic means. I believe this information could be added, and in the words of raphael2003harmonic, it is an obvious extension to the model.
+			}}
+	\section{raphael2004functional }
+		Barely the same as raphael2003harmonic
+		\subsection{My Comments}
+			See raphael2003harmonic
+	\section{riemann1903harmony }
+	\section{rocher2009dynamic }
+		Takes as input a MIDI file, outputs root and mode of the chord. Compares its results to Melisma.
+		\subsection{My Comments}
+			\emph{\textbf{
+				This approach also uses MIDI files as input, getting rid of pitch-spelling information, it also seems to be very simplistic as it only extends Melisma in providing major or minor modes for the root analysis. Experiments are done over different kinds of music, which is outside the constraints of classical music that we have set.
+			}}
+	\section{rohrmeier2008statistical }
+		Using a heuristic method of segmentation. Analyzes distributions of single pitch-class-sets, chord classes and pitch-class-sets transitions. rohrmeier2008statistical are interested in the research of \emph{syntacticality} in harmony. The goal is to produce descriptive analyses of harmonic structure based on an empirical approach.
+
+		The choice of the corpus is that of Bach's chorales, because it constitutes a large and coherent corpus of pieces regarding style and composition technique.
+
+		rohrmeier2008statistical claim that this is pioneering work in the statistical analysis of a corpus for the purpose of finding features of tonal harmony.
+
+		\subsection{Method}
+			The corpus used by rohrmeier2008statistical contains 386 pieces. All the harmonies are mapped to pitch-class sets.
+			There are a few pre-processing steps to the music material:
+			\begin{itemize}
+				\item All the chorales are transposed to CMajor or Cminor. In the case of modal chorales, they are associated with related major or minor mode.
+				\item In order to filter voice-leading phenomena, rohrmeier2008statistical the corpus is sampled to one quarter note.
+				\item Chords are restricted to only one per sample, a decision rule is applied to choose the preferred chord.
+			\end{itemize}
+
+			In order to choose the preferred chord for a particular sample, in principle, the first chord is preferred, if this chord is dissonant, the least dissonant chord of the sample will be picked. The dissonance is evaluated using the normal form of the corresponding pc-sets of the chords.
+
+		\subsection{Results}
+			According to rohrmeier2008statistical, the most frequent occurrences of pc-sets are those of tonic, dominant and subdominant chords, as it would be expected. In the case of minor mode, also the relative major is very frequent.
+
+			Some of the key results regarding the pc-set classes are:
+			\begin{itemize}
+				\item In major mode works, 60.8% of the pc-sets are major chords, and 17.1% minor chords
+				\item In minor mode works, 44.9% of the pc-sets are major chords, and 33.7% minor chords.
+				\item The top six classes cover 91.9% of all chords in both, major and minor distributions.
+			\end{itemize}
+
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				Even though this work was targeted over a corpus of Bach Chorales, there are at least a few relationships and common ground to string quartets, e.g., they both constitute a fixed and mainly uniform four-part setting.
+			}}
+			\emph{\textbf{
+				The results from this research, apart from being interesting in confirming music-theory beliefs regarding common chords and transitions in tonal music, could be used to take decisions during difficult cases in harmonic analysis algorithms. They could also be replicated in a different corpus to target its particular common chords and transitions.
+			}}
+
+	\section{rohrmeier2011towards }
+		rohrmeier2011towards claim that the structure of harmonic progressions exceeds the simplicity of a markovian transition table. It proposes a set of phrase-structure grammar rules.
+
+		rohrmeier2011towards present the hierarchical analysis done by kostka1995tonal from their music-theory approach, and believe it can be brought to a closer formalization. rohrmeier2011towards present a tree representation of a chord sequence, using two principles:
+
+		\begin{itemize}
+			\item Chords have dependencies and the existence of one sometimes requires the existence of another
+			\item Chords have functions, these functions can be realized by a set of chords.
+		\end{itemize}
+
+		The system comprises 27 rules (not stated if this is the complete number of rules) for the generation of a grammar, this helps to model common-practice music as well as jazz music. The output of this algorithm is a hierarchical tree of the functions and dependencies of the chords.
+
+		\subsection{My Comments}
+		\emph{\textbf{
+			It is unclear to me from the paper, if this approach has been implemented into an actual model, or if it only constitutes a theoretical discussion. The examples provided seemed to interpret a set of chord labels and construct the hierarchical tree representing the functions and dependencies among those chords.
+		}}
+		\emph{\textbf{
+			The level of detail from rohrmeier2011towards to model every special case of the harmonic language is remarkable, as they are trying to comprehend distinct kinds of cadences, chords and modulations in the model.
+		}}
+
+
+	\section{sapp2001harmonic }
+		\subsection{My Comments}
+			\emph{\textbf{
+				This paper describes the mapping of tonalities to colors, a very basic table is given at the first pages with a mapping of colors for every major and minor key. This should be helpful for visualization of harmony.
+			}}
+	\section{sapp2005online }
+		This short paper describes the KernScores website and the Humdrum format.
+		Some important information regarding the website is that every information page contains three buttons:
+		\begin{itemize}
+			\item The "H" icon, which links to the humdrum output of the work
+			\item The "M" icon, which links to a MIDI output of the work
+			\item The "S" icon, which links to a PDF output of the work
+		\end{itemize}
+		There are six other ofrmats that the website can output for a work additional to Humdrum, these are converted in real-time:
+		\begin{itemize}
+			\item MIDI
+			\item MusicXML
+			\item Guido Music Notation
+			\item Note lists for Melisma Music Analyzer
+			\item Director Musices
+			\item SKINI
+		\end{itemize}
+		\subsection{My Comments}
+			\emph{\textbf{
+				This short paper describes the KernScores website and some of the interactions available in the website's interface.
+			}}
+	\section{sapp2005visual }
+		\subsection{My Comments}
+			\emph{\textbf{
+				Continuation of the work described in sapp2001harmonic, using particular examples of key analysis.
+			}}
+	\section{sapp2007computational }
+	\section{scholz2005automating }
+		The work from scholz2005automating proposes to improve the models from pachet2000computer. scholz2005automating attempt to extend the approach by dealing with \emph{modal borrowing} and \emph{secondary dominants}.
+		\subsection{My Comments}
+		\emph{\textbf{
+			This working is very oriented to Jazz music, however, the authors claim it was meant to analyze any music whose harmony is functional. The model is done following and extending the ideas from pachet2000computer to recognize modal borrowing and secondary dominants. It was implemented in Java, however, no url is provided to the implementation of the approach.
+		}}
+	\section{taube1999automatic }
+	\section{scholz2008cochonut }
+		This work from scholz2008cochonut is based in the approach of pardo2002algorithms, to be used over guitar midi performances. It is understood from the results that the files were not analyzed in real time, but producing a midi file out from a performance, manually labeling and further analyzing it automatically to compare the output with the manual annotations.
+		\subsection{My Comments}
+		\emph{\textbf{
+			Adaptation of pardo2002algorithms for performance MIDI files.
+		}}
+	\section{temperley1997algorithm }
+		The aim is to produce an algorithm that models the human process of harmonic analysis done by a trained expert, and to take it as indicative of the analysis produced subconsciously by listeners in general.
+
+		The traiditional harmonic analysis done in music theory courses uses "Roman numeral analysis", in this kind of analysis, each segment of a piece is labeled with symbols indicating the relationship between each root to the current key. The problem of harmonic analysis, as conceived by Temperley, is to divide the piece into segments and label each of them with a root.
+
+		Temperley claims that Roman numeral analysis could be broken down into root finding and key finding. He focuses his work in the problem of root finding, assuming that root finding can be done independently without considering key information.
+
+		Temperley compares the approaches of Winograd and Maxwell in their "root finding". According to Temperley, the weak point of these algorithms are the following:
+
+		\begin{itemize}
+			\item Sequences of notes that are not displayed simultaneously (vertically), as arpeggiations of chords.
+			\item Missing pitches in the spelling of a full chord, which can be deduced from the context.
+			\item Ornamental notes. Maxwell proposes specific rules to deal with these notes, but according to Temperley, neither Maxwell’s or Winograd’s are good enough to correctly detect ornamental notes.
+
+			Temperley presents a fragment of music that breaks the rules made by Maxwell, the main reasoning behind is that a chord is spelled through different obvious, which results quite obvious by a human looking at the score, but it is not for an algorithm reading on a "vertical segment by vertical segment" basis.
+
+			The example he presents as an "exception" to the approachable music fragments by Winograd and Maxwell, also introduces the implications that "melodic streams" have in harmonic analysis, which is one of the elements he approaches in his work (stream seggregation).
+
+			Later, Temperley discusses "connectionist" approaches, taking as the main example the model from Bharucha (Barucha1987 and Barucha1991). These kind of models try to represent the perceptual experience of harmony.
+
+			Following that, the third kind of model discussed is one based on "virtual pitches" by Parncutt. This model considers the root of a chord is the virtual pitch that emerges stronger by the pure-tone components of the chord. According to Temperley, this works well for complete chords, but fails when trying to interpret dyads or single notes.
+
+			Temperley summarizes that Winograd's and Maxwell's systems are the best approximations to harmonic analysis, better than Barucha's and Parncutt's. The intention of the latter two was more to analyze perception rather than replicating a "music theory" harmonic analysis, which is what I am concerned on.
+
+			Temperley proposes a model for pitch classes that he denotes as "Tonal Pitch Classes" (TPC), the basic idea with this is differentiating spelling of the same pitch class, according to their proximity in the "line of fifths". The line of fifths is also a model he proposes, similar to the circle of fifths, but extended infinitely, this is used to locate the proximity of roots among each other and also of pitch events.
+
+			The algorithm from Temperley starts with choosing a TPC label for each pitch event, he denotes this as the "TPC level of the algorithm". Following that, it continues to the harmonic level, where it divides the piece into segments labeled with roots. It is to be noted that the line-of-fifths model is used both for determining TPC and also for labeling segments.
+		\end{itemize}
+
+		\subsection{Pitch Variance Rule}
+		Designate a pitch label in the range of F\# and Db to the first event, then designate the label that clusters the events closer in the line-of-fifths. This labeling of pitch events computes a new "center of gravity" (COG) for each new event, and gives more weight to recent events in time than older, as well as longer events in duration than shorter.
+
+		\subsection{Compatibility Rule}
+		The labeling of root segments is done through a compatibility rule. The algorith measures the interval between a root and a TPC. The prefered intervals are the following: 1,5,3,b3,b7,ornamental. The ornamental intervals being all the rest of intervals which are not part of the first five in the preference rule. Temperley makes the distinction between 3 and b3, for example, which implies that this rule cannot be applied to NPCs but only TPCs. Temperley claims that additional information from a roman numeral analysis (mode, extension, etc.) is easily accessible.
+
+		In order to label the segments, the algorithm has to do an additional consideration. It should give preference to make spans start on strong beats of the meter. This with the objectibe of aligning the chord-span segmentation with the meter, and also helping to get "long-spans" over shorter ones, since the strong beats are usually away in time.
+
+		\subsection{Strong-Beat Rule}
+		This is a very important point of the algorithm: It requires information about metrical structure.The definitions for how the metrical structure is defined come from Lerdahl \& Jackendoff. Those time points that are not beats of the metrical structure cannot be segment boundaries.
+
+		\subsection{Harmonic Variance Rule}
+		Gives preference to roots that are closer to the roots of nearby segments according to the line of fifths. Also makes use of a COG that measures the average position of the previous roots in the line of fifths.
+
+		\subsection{Ornamental Dissonance Rule}
+		Every event that has not a chord-tone relationship to the current root is considered an ornamental dissonance. The preferred ornamental dissonances are the ones that are closely followed by another pitch a step or half-step away.
+
+		This is the final rule of the algorithm, it attempts to omit pitches during the compatibility rule, according to whether they are considered ornamental pitches. The approach taken to decide whether a pitch is ornamental is based in the studies of Bharucha, using what he denoted as the "anchoring principle" which gives more likelihood of being ornamental pitches to those that are a step or half-step away from the next pitch. Temperley proposes something similar to this, introducing the concept of "potential ornamental dissonances" (PODs). PODs are not rigurously categorized, they could be real pitches, and viceversa, pitches that do not meet the step or half-step condition could be considered ornamental in the end.
+
+		This rule is intended to handle passing tones, neighbour notes, appoggiaturas, double-neighbours. It fails for escape tones and anticipations.
+
+		Something missing from the current algorithm is also the voice-leading considerations for the spelling of a note (G, G\#, A, A, Ab, G).
+
+		\subsection{Basic operation of the algorithm}
+		A segment will get the interpretation that is part of the highest scoring interpretation overall, never in isolation.
+
+		The implementation of the algorithm considers that the score of a segment depends always on th current COG, and this depends on the previous. This forces a left-to-right processing of the piece.
+
+		The implementation from Sleator-Temperley considers an offline processing of the harmonic analysis, giving a final output after hearing the entire piece. It has not been tested in real-time applications.
+
+		\underline{NOTE: Visualizing the harmonic roots and changes while a music score is playing (as in the verovio playback framework) could be an interesting test for the logic of this algorithm.}
+
+		It is important to note that by choosing the best "overall" interpretation everytime, it means that the algorithm could be analyzing segment N and decide to change the root of segment N-1, revising and backtracking its original decision.
+
+
+		\subsection{Further Issues}
+
+		The TPC representation needs feedback from the harmonic level, but it goes prior the harmonic level. The solution proposed by Temperley-Sleator is to perform this processing together, scoring the output of combined TPC-harmonic representation.
+
+		According to Temperley, this algorithm should also help providing information about the grammaticality (or "tonalicity") of a piece, meaning that highly tonal music should output higher scores in the interpretations than music with low "tonalicity" (e.g.: Schoenberg, Webern, Scriabin or Stravinsky).
+
+		In this section Temperley also discusses the effort from Krumhansl in key estimation.
+
+		Important that Temperley mentions that the algorithms from Winograd and Maxwell use harmonic information as a basis for key judgements.
+
+		Among the importances of considering the pitch collection and harmonic root during the process of key finding we find that close keys could be identified easier (CMajor from Cminor due to the different pitch collection, while the harmonic root progressions are the same; Cmajor from Aminor, due to the same pitch collection with different harmonic root progressions).
+
+		To work around the problem of generating an infinite number of interpretations (due to the infinite elements in the line-of-fifths), the implementation Temperley-Sleator propose constrain the first TPC to be in a range of ---
+
+		\subsection{Results of the Implementation}
+		Looking at the results of the interpretation for Bach's Gavotte, it results obvious that it fails in a scenario with a clear A chord and a escape tone. The algorithm is unable to deal with such escape tones.
+	\section{temperley1999modeling }
+	\section{temperley1999s }
+	\section{temperley2004bayesian }
+		temperley2004bayesian suggests that music style can be modeled by probability, and that gives shape to what eventually we attempt to analyze.
+
+		In this work, a bayesian model is presented to find structure in music given a musical surface: argmax_structure p(surface Istructure) p(structure)
+
+		The model is compared against krumhansl2001cognitive and previous efforts from Temperley, the model is slightly better in accuracy when feed with the specific probabilities of the kostka-payne corpus. Temperley claims that it is much simplier than other models, and that it should output similar results for other corpus, given that the right weight vectors are given.
+	\section{temperley2009unified }
+	\section{tymoczko2001root }
+	\section{ulrich1977analysis }
+		According to ulrich1977analysis, there are two main problems for Jazz musicians, creating melodic material and fitting it to a particular harmonic structure. His work pretends to deal with the latter problem.
+
+		This work is oriented towards the final goal of generating automatic Jazz improvisations.
+
+		Ulrich considers that chord identification and is dependent on key identification. Therefore, he first tried to obtain all possible chords with which a set of notes can be matched, and then running a key analyzer. Finally, the chords and analyzed keys are passed to a functional analyzer, which outputs the function of each chord respecting its key center.
+
+		Some of the assumptions from ulrich1977analysis:
+		\begin{itemize}
+			\item Chords only change on beats
+			\item Each note is less than an octave apart from the next highest note of the chord
+		\end{itemize}
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				The work of ulrich1977analysis is one of the pillars of Jazz harmonic analysis, some of the restrictions it has is that it does not work for works in a minor tonality, and constraints chord changes to occur once every beat.
+			}}
+	\section{white2013alphabet }
+	\section{white2015corpus }
+		The purpose of this paper is introduce a key-finding algorithm that learns a chord vocabulary from a common-practice corpus and uses it for analyzing music surfaces. The samples used to test this model are style-specific.
+
+		This work pretends to contribute to music theory discussions of chords and chord types by using unsupervised learning of escholastic roman numerals.
+
+		The corpus used for this work is the Yale Classical Archive Corpus. The corpus consists of \emph{salami-slices} of MIDI files. The music is analyzed in windowed key-profiles such that every segment is either marked with a key and mode or as ambiguous.
+
+		No hand-tgged examples are used to evaluate the performance of this algorithm.
+
+		The algorithm groups chords that share scale degrees and occur in similar contexts, then builds a transition matrix between these chord groups that is used to analyze unknown music.
+
+		\subsection{My Comments}
+			\emph{\textbf{
+				It is not entirely clear to me how the exact workflow of grouping the chords happens in the learning stage, also, not detailed discussion on the results of the algorithm. The idea seems compliant with the context of Haydn's string quartets.
+			}}
+	\section{wilding2008automatic }
+		\subsection{My Comments}
+			\emph{\textbf{
+				This is a M.Sc. report, which is a prequel to granroth2013harmonic. See granroth2013harmonic.
+			}}
+	\section{willingham2013harmonic }
+	\section{winograd1968linguistics }
+		winograd1968linguistics bases his tonal theory background in Forte's book "Tonal harmony in concept and practice". He uses systemic grammar as the linguistical background, this kind of grammars were applied to natural language before this work.
+
+		The work of winograd1968linguistics is pioneer in using the computational approaches of natural language into music, among other things, Winograd discusses the complexity of the tonal language, describes a grammar for defining chords, degrees, levels of completeness of the chords, modulations, etc.
+
+		Winograd mentions two important "special tricks" to make the program more efficient. One of them is the use of possibility lists in building the parsing tree. The second is attaching an atomic symbol to each possible tonality, so every search can be made using SASSOC, the fast LISP searching function. In the implementation from winograd1968linguistics, notes are represented with their corresponding pitch-spelling, in the form of a dotted pair of integers, the first representing diatonic class [0-6] and the second the chromatic class [0-11]. The octave is also added as dotted integer, hence, in LISP notation, a middle C# would be (3 . (0 . 1)).
+
+		The program takes as input a manually crafted representation of the chords of the piece, and outputs the functional harmonic analysis.
+
+		\sub{My Comments}
+			\emph{\textbf{
+				This work by winograd1968linguistics is not only important because it is the first and pioneering work in computing a functional harmonic analysis, but also because it linked the computational techniques used in natural language processing to music. History aside, the input format for the program is not convenient, and as presented by future researchers, the algorithm has problems with certain cases, such as those involving arpeggiations. It cannot be denied that it this work marked a checkpoint and reference for all future work in harmonic analysis.
+			}}
 
 \newpage
