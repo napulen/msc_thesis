@@ -25,7 +25,7 @@ Literature review
 		[Classical vs. Jazz]
 			[Differences]
 			[Similarities]
-		[Type of approach]
+		[Type of model]
 			[Rule-based]
 			[Probabilistic]
 			[Grammars]
