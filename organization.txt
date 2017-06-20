@@ -33,8 +33,7 @@ Literature review
 		[Target output]
 			[Figured bass]					Barthelemy, is the only one
 			[Functional harmonic analysis]	Temperley-Sleator-Sapp, Raphael, Illescas.
-			[Tonal hierarchies]				Rohrmeier, Bas de Haas
-		[Analyzing Haydn]	Justification of approach that fits better for Haydn string quartet corpus
+			[Tonal hierarchies]				Rohrmeier, Bas de Haas		
 	[String quartets]
 		[Musical form and harmony]
 	[Joseph Haydn]
@@ -71,7 +70,7 @@ Methods
 			[Content]
 	[Evaluation]
 		[Evaluation workflow]
-			[Evaluation files]	They are valid Humdrum files with 2 pairs of **harm **root spines
+			[Evaluation files]	
 				[Generating]
 				[Using Humdrum-extras]
 			[Comparing]
@@ -82,7 +81,7 @@ Methods
 				[Total time units]
 				[Percentage]
 				[Distribution of degrees]
-					[Resolution of degree in secondary functions]
+				[Resolution of degree in secondary functions]
 	[Issues]
 		[Transcription issues]
 			[Matching Altmann Edition]
