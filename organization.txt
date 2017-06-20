@@ -1,0 +1,136 @@
+Dedication
+	Grandmother, Juan Rodrigo Perez Cardenas. Family. Kinga.
+Acknowledgments
+	Xavier Serra. Rafael Caro. Craig Sapp. 
+
+Abstract
+	[Harmonic analysis]
+	[Base model]
+	[Dataset]
+	[Results]
+	
+Introduction
+	[Introduction]				What is harmonic analysis about
+	[Motivation]	 			Why is it important to make it automatic?
+	[Objective] 				State the goals achieved
+	[Structure of the report] 	How is everything organized
+	
+Literature review
+	[Music theory]
+		[Fundamental bass] 			Rameau's theory, the first theory.
+		[Root succession tables] 	Appears in several textbooks, e.g., Walter Piston's Harmony book, it is not really based in scientific data in principle, but it has been somewhat validated by science recently
+		[Figured Bass]				Used mainly for performance.
+		[Functional harmony] 		Based in Hugo Riemann's theory, it is the focus of this work. It contains more information about tonal context than bass motion or root movement theories.
+	[Models]
+		[Classical vs. Jazz]
+			[Differences]
+			[Similarities]
+		[Type of approach]
+			[Rule-based]
+			[Probabilistic]
+			[Grammars]
+			[Machine Learning?]
+		[Target output]
+			[Figured bass]					Barthelemy, is the only one
+			[Functional harmonic analysis]	Temperley-Sleator-Sapp, Raphael, Illescas.
+			[Tonal hierarchies]				Rohrmeier, Bas de Haas
+		[Analyzing Haydn]	Justification of approach that fits better for Haydn string quartet corpus
+	[String quartets]
+		[Musical form and harmony]
+	[Joseph Haydn]
+		[Who was he]
+		[Why is it relevant for common-period]
+		[String quartets]		
+		[Op.20 "Sun" quartets]		Introducing the research question and justification, what would we expect from running rule-based harmonic analysis models over "sun" quartets, and what can we expect from that?
+
+Methods		
+	[Automatic harmonic analysis workflow]
+		[Melisma]
+			[Meter]
+			[Key]
+			[Harmony]			
+			[Parameter files]
+		[Humdrum-extras]
+			[Issues with melisma input and preprocessing with kern2melisma]
+			[Piping output of key to key2humdrum]
+			[Synchronization and assemble]
+			[tsroot summarizes everything]
+	[KernScores]
+		[Content]
+		[tsroot automatic analysis]
+		[Op.20 "Sun" quartets]
+			[Missing scores]
+			[Completing the scores]
+			[Performed analysis in website]
+	[Dataset]
+		[Manual annotations]
+			[**harm syntax]
+			[**commentary spines]
+		[About Op.20 "Sun" quartets]
+			[Summary]
+			[Content]
+	[Evaluation]
+		[Evaluation workflow]
+			[Evaluation files]	They are valid Humdrum files with 2 pairs of **harm **root spines
+				[Generating]
+				[Using Humdrum-extras]
+			[Comparing]
+				[Rhythmic normalization]
+				[Resolving root from **harm expression]
+				[Ignored annotations]
+			[Extracting final statistics]
+				[Total time units]
+				[Percentage]
+				[Distribution of degrees]
+					[Resolution of degree in secondary functions]
+	[Issues]
+		[Transcription issues]
+			[Matching Altmann Edition]
+		[Annotation issues]
+			[Non-expert analysis]
+			[Fugues are too contrapunctual]			
+			[Lower quality analysis]
+				[Op.20 No.5 - I]
+				[Op.20 No.6 - I]
+			[Flat -VII annotated as VII]
+		[Workflow issues]
+			[Source code coming from different sources]
+			[Melisma array sizes]
+			[tsroot harmony2humdrum and key2humdrum]			
+		[Evaluation issues]
+			[Ignored annotations]
+			[Resolution of degree in secondary functions]
+		[Bugfixes]	
+			[tsroot --meldir and --midir args]
+			[tsroot tempo correction]			
+		[Known bugs]
+			[Chr chords are ignored] They should probably not
+		
+Results
+	[Best performance]
+	[Worst performance]
+	[Helen Budge chord frequencies]
+	[Comparison against it]
+	[Performance tables per score]
+	
+Discussion
+	[Future work]
+		[Musical domain]
+			[Beethoven Op.18]
+			[Mozart Op.10]
+		[Technological domain]
+			[Focusing in scores] Leaving cognition behind
+			[Pitch-spelling] Illescas has done it, but none else			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
