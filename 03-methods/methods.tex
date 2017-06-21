@@ -27,58 +27,122 @@
     \subsubsection{tsroot summarizes everything}
     The tsroot programs performs all the steps described before, plus interpreting the output of key2humdrum and producing a final humdrum score with the analysis information appended to it.
 \section{KernScores}
-  KernScores through its website allows to do an automatic analysis of the scores hosted in their corpus.
   \subsection{Content}
+  KernScores through its website allows to do an automatic analysis of the scores contained in their corpus.
   \subsection{Automatic analysis using tsroot}
+  The website runs the tsroot program over the humdrum scores and show the output to the user.
   \subsection{Op.20 "Sun" quartets}
+    19 out of 24 pieces of the Op.20 quartets are contained in KernScores
     \subsubsection{Missing scores}
+    The missing scores are:
+    \begin{itemize}
+      \item Op. 20 No. 1 - III. Affettuoso e sostenuto
+      \item Op. 20 No. 2 - II. Capriccio. Adagio
+      \item Op. 20 No. 3 - I. Allegro con spirito
+      \item Op. 20 No. 4 - I. Allegro di molto
+      \item Op. 20 No. 4 - II. Un poco adagio e affettuoso
+    \end{itemize}
     \subsubsection{Completing the scores}
+    I transcribed these scores manually to complete the set, in some cases using a midi file and hand-fixing it
     \subsubsection{Performed analysis in the website}
+    The first thing I did was asking the website to analyze the scores, and reproduce that in my own computer
 \section{Dataset}
+The dataset consists of 24 pieces, 4900+ chord annotations and commentaries for hard spots.
 	\subsection{Manual annotations}
+  They follow the **harm syntax
 		\subsubsection{**harm syntax}
+    It is a valid syntax of the humdrum grammar.
 		\subsubsection{**commentary spines}
-	\subsection{About Op.20 "Sun" quartets}
+    Usually located in ambiguous section, or to annotate certain structural analysis (sonata form), but not too methodical.
 		\subsubsection{Summary}
+    Chords per score?
 		\subsubsection{Content}
+    All the scores in the dataset
 \section{Evaluation}
   \subsection{Evaluation files}
 		They are valid Humdrum files with 2 pairs of **harm **root spines
     \subsubsection{Generating}
+    Take the manual and automatic, extract the harmonic root using harm2kern, append and filter
+    \subsubsection{Rhythmic normalization}
+    Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
 		\subsubsection{Using Humdrum-extras}
+    Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
 	\subsection{Comparing}
-		\subsubsection{Rhythmic normalization}
 		\subsubsection{Resolving root from **harm expression}
+    harm2kern for now
 		\subsubsection{Ignored annotations}
-	\subsection{Extracting final statistics}
+    Ignoring 'Chr' annotations. See the issues section.
+	\subsection{Extracting final results}
 		\subsubsection{Total time units}
+    The time unit represents the shortest note for that particular score. The scores are normalized to that note as the rhythmic "atom", irrelevant of its value.
 		\subsubsection{Percentage}
+    Every time unit is matched between manual and automatic file, the percentages are computed considering the total number of "time units" in the score, and the ones that match identically in harmonic root between both files.
 		\subsubsection{Distribution of degrees}
+    Additional statistics are provided of how the tonal degrees distribute per each score in both, manual and automatic files.
 		\subsubsection{Resolution of degree in secondary functions}
+    This is a special problem to consider when evaluating functional harmonic analysis. Every subfunction represents a diatonic degree of the current key, an uppercase diatonic degree represents the major mode tonality of that degree, a lowercase diatonic degree represents the minor mode tonality of that degree.
 \section{Issues}
+This section describes different issues presented and addressed during this work
 	\subsection{Transcription issues}
-		\subsubsection{Matching Altmann Edition}
+		\subsubsection{Transcription of the missing files from Op.20}
+    \begin{itemize}
+    \item Op.20 No.4 - I: mm.127
+		Replacing E in the first beat of the second violin, for E#
+    \end{itemize}
+    \subsubsection{Corrections over the Altmann Edition}
+    \begin{itemize}
+    \item Op.20 No.2 - I: mm.29
+    In the Altmann edition, the bass goes to E flat after a Dominant Seventh chord, however, in other editions it moves to the tonic, it makes more sense to the harmonic context to move towards the tonic, therefore, ignoring the spelling of the Altmann Edition for this measure and considering the bass as heading to the tonic in the third beat of the measure.
+    \end{itemize}
+		\subsubsection{Corrections over previous KernScores corpus}
+    \begin{itemize}
+    \item Op.20 No.4 - I: mm.124
+    Changing the spelling of the viola from F natural to E sharp as it explains better a dominant seventh chord, and also, it appears like that in the Altmann Edition.
+
+    \item Op.20 No.4 - IV: mm.24
+    Adding an e natural to the first violin. It matches what is written in the Altmann Edition, and it makes the harmony clearer, from a g-diminished triad to a fully diminished e natural seventh chord, which explains better the f chord in the next measure
+
+    \item Op.20 No.4 - IV: mm.92 & mm.94
+    Correcting wrong spelling of a note in the viola
+
+    \item Op.20 No.6 - II: mm.5
+    Changing the D in the fourth beat of the measure for a B natural, which matches the Altmann Edition
+    \end{itemize}
 	\subsection{Annotation issues}
 		\subsubsection{Non-expert analysis}
+    Most of the analyses were done by me, I am not an expert.
 		\subsubsection{Fugues are too contrapunctual}
+    The fourth movements of Op.20 No.2, No.5 and No.6 are fugues, these were some of the most difficult scores to analyze, mainly because they are very contrapunctual.
 		\subsubsection{Lower quality analysis}
+    These two scores were transcribed directly from the manual analysis done in paper, I did not add inversions information neither double-checked the analysis.
     \begin{itemize}
     \item Op.20 No.5 - I
 		\item Op.20 No.6 - I
     \end{itemize}
 		\subsubsection{Flat -VII annotated as VII}
+    While annotating the scores, I marked the lowered seventh degree of the minor mode simply as VII, while it should be a lowered seventh -VII. It could affect the results.
 	\subsection{Workflow issues}
+    Lots of issues.
 		\subsubsection{Source code coming from different sources}
+    The main problem is that the source code comes from different repositories, and it is difficult in terms of reproducibility to put everything together in one place and guarantee it will work.
 		\subsubsection{Melisma array sizes}
+    There was an "error" in the melisma music analyzer. The size of static structures like arrays, have been hardcoded, in long scores like Op.20 No.3 - I, the program reached buffer overflow and crashed without completing the analysis, I fixed my version of the Melisma Music Analyzer programs to correct this, but this code is not public, as I am not aware of the license of the Melisma source code. If attempting to run the analysis in these files, the programs will crash unless this is fixed.
+    \begin{itemize}
+    \item Op.20 No.4 - IV
+    \item Op.20 No.3 - I
+    \item Op.20 No.5- I
+    \end{itemize}
 		\subsubsection{tsroot harmony2humdrum and key2humdrum}
+    tsroot had a different default tempo than kern2melisma, therefore, when running the analysis over files with no explicit tempo information, the result is incorrect. I fixed this in my version of the humdrum extra tools, you can download it from my fork repository. At the moment of this publication, the fix for this has not been merged in the main project repository.
 	\subsection{Evaluation issues}
-		\subsubsection{Ignored annotations}
-		\subsubsection{Resolution of degree in secondary functions}
-	\subsection{Bugfixes}
-		\subsubsection{tsroot --meldir and --midir args}
-		\subsubsection{tsroot tempo correction}
-	\subsection{Known bugs}
 		\subsubsection{Chr chords are ignored}
-    They should probably not
-
+    I am ignoring the annotations denoted as \emph{Chr} by the automatic analysis, instead of denoting a change of harmony after encountering this tag, I am preserving the previous harmonic root. This is probably wrong and should be addressed in a future evaluation.
+		\subsubsection{Resolution of degree in secondary functions}
+    Though I described the process to resolve a subfunction, I did not write this code with my harmparser. In practice, I delegated this process to the harm2kern program that is already available in the humdrum extra tools. I did not check if the parser from harm2kern is doing this process as I described it. It might be somewhat different.
+	\subsection{Bugfixes}
+  As the result of this work, a few problems were addressed
+		\subsubsection{tsroot --meldir and --midir args}
+    The implementation of tsroot has a hardcoded default value of the meldir and midir directories, when trying to change it with console arguments, the program crashed as there was some issue in the translation of the C string. This problem was detected and now it is corrected in the latest version of humdrum extras. Special thanks to Craig Sapp who double-checked this after I posted in the humdrum forum
+		\subsubsection{tsroot tempo correction}
+    As stated previously, there is a different default tempo in the tsroot program than the kern2melisma program, this means if a file has not an explicit tempo indication, the output analysis is incorrect. This was the case for the entire dataset of Op.20, so detecting and correcting this issue was crucial for this work. This fix has not been until this point merged into the official humdrum extra repository.
 \newpage
