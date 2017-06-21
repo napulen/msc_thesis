@@ -22,12 +22,6 @@
     \subsubsection{Piping the output key to key2humdrum}
     Once the file is in Melisma's format, it can go through the melisma programs, as the output of these programs becomes the input for the next one, the files can be piped in unix environment, so it looks like this: kern2melisma | meter | harmony | key.
     At this point, we have the output of the key program from Melisma, this outputs needs additional processing to go back into a humdrum file. There are two programs from Craig Sapp of the MuseInfo tools that enable this process. In this work, I am requiring mainly the key2humdrum program, as this is the one taking the input from the key program, optionally parsing the roman numerals included with the output of the key program.
-%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%
-% Stupid latex bug that destroys the
-% layout unless I force a pagebreak.
-\pagebreak
-% Sorry for the inconvenience.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsubsection{Appending to a humdrum file}
     The last step in getting the information back into a humdrum file is parsing the output of the key2melisma program and appending this information to a humdrum spine. This process is not done by a standalone program, but rather a program that comprehends all the process described before.
     \subsubsection{tsroot summarizes everything}
