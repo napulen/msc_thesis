@@ -4,13 +4,24 @@
 
 \section{Automatic harmonic analysis workflow}
   \subsection{Melisma}
+  The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a "NoteFile" which is similar to a plain-text representation of midi files.
+  In order to achieve a full harmonic analysis, a NoteFile needs to go through 3 stand-alone programs
   	\subsubsection{Meter}
+    This program extracts metrical information about the musical piece, using the theories of the Generative Theory of Tonal Music as a basis.
+    The output of this program is the same notefile with beat information appended at the end.
     \subsubsection{Harmony}
+    This program takes as input the notefile with beat information (the output from the meter program), and outputs information about harmonic roots for each beat. The name is somehow misleading, as this program's output is not harmony, but a harmonic root. Temperley divided the task of harmonic analysis in root estimation and key estimation, this program computing the first of these subtasks. One argument of why they decided to call it "harmony" program instead of "harmonic-root" could be that it was developed before than the key algorithm, and at that moment it was the only analysis done. This information has not been corroborated by me.
     \subsubsection{Key}
+    This program takes as input the notefile with beat and harmonic-root information (the ouput from the harmony program). Something to remark about this program is that it might work without the information from the harmony program, estimating only the key, without using any harmonic root information. This could be seen in the following way, if David Temperley divides the problem of harmonic analysis into two subproblems: Root estimation and Key estimation, the first mode of this program pretends to solve the second problem, while in the second mode, adding the output from the "harmony" program as input, pretends to solve both subtasks and output a full harmonic analysis. The difference between these different modes relies on the user setting a certain value in the corresponding parameter file.
     \subsubsection{Parameter files}
+    Every program from the Melisma Music Analyzer accepts a parameter file for configuring different options, such as verbosity or roman numeral analysis.
   \subsection{Humdrum extras}
+  The humdrum extras are a set of tools developed in C++ by Craig Sapp to process humdrum files (or to convert other formats into humdrum). For this work, we are particularly interested in a few of these utilities that help to process a humdrum file, pass it to the melisma music analyzer, and then bring the output back to humdrum.
    	\subsubsection{Issues with Melisma's input}
+    The input format from the Melisma Music Analyzer, yet it resembles a MIDI file, it is not a midi file, and it needs parsing. Humdrum extras provides a parser to convert a humdrum file into the notefile format used by Melisma, this program is called kern2melisma, and it is the first step in the workflow of a functional harmonic analysis from a humdrum score.
     \subsubsection{Piping the output key to key2humdrum}
+    Once the file is in Melisma's format, it can go through the melisma programs, as the output of these programs becomes the input for the next one, the files can be piped in unix environment, so it looks like this: kern2melisma | meter | harmony | key.
+    At this point, we have the output of the key program from Melisma, this outputs needs additional processing to go back into a humdrum file. There are two programs from Craig Sapp of the MuseInfo tools that enable this process. In this work, I am requiring mainly the key2humdrum program, as this is the one taking the input from the key program, optionally parsing the roman numerals included with the output of the key program.
 %%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%
 % Stupid latex bug that destroys the
 % layout unless I force a pagebreak.
@@ -18,8 +29,11 @@
 % Sorry for the inconvenience.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsubsection{Appending to a humdrum file}
+    The last step in getting the information back into a humdrum file is parsing the output of the key2melisma program and appending this information to a humdrum spine. This process is not done by a standalone program, but rather a program that comprehends all the process described before.
     \subsubsection{tsroot summarizes everything}
+    The tsroot programs performs all the steps described before, plus interpreting the output of key2humdrum and producing a final humdrum score with the analysis information appended to it.
 \section{KernScores}
+  KernScores through its website allows to do an automatic analysis of the scores hosted in their corpus.
   \subsection{Content}
   \subsection{Automatic analysis using tsroot}
   \subsection{Op.20 "Sun" quartets}
