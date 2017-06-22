@@ -14,8 +14,8 @@
     \subsubsection{Key}
     This program takes as input the notefile with beat and harmonic-root information (the ouput from the harmony program). Something to remark about this program is that it might work without the information from the harmony program, estimating only the key, without using any harmonic root information. This could be seen in the following way, if David Temperley divides the problem of harmonic analysis into two subproblems: Root estimation and Key estimation, the first mode of this program pretends to solve the second problem, while in the second mode, adding the output from the "harmony" program as input, pretends to solve both subtasks and output a full harmonic analysis. The difference between these different modes relies on the user setting a certain value in the corresponding parameter file.
     \subsubsection{Parameter files}
-    Every program from the Melisma Music Analyzer accepts a parameter file for configuring different options, such as verbosity or roman numeral analysis.
-  \subsection{Humdrum extras}
+    Every program from the Melisma Music Analyzer accepts a parameter file for configuring different options, such as verbosity or roman numeral analysis.
+  \subsection{Humdrum extras}
   The humdrum extras are a set of tools developed in C++ by Craig Sapp to process humdrum files (or to convert other formats into humdrum). For this work, we are particularly interested in a few of these utilities that help to process a humdrum file, pass it to the melisma music analyzer, and then bring the output back to humdrum.
    	\subsubsection{Issues with Melisma's input}
     The input format from the Melisma Music Analyzer, yet it resembles a MIDI file, it is not a midi file, and it needs parsing. Humdrum extras provides a parser to convert a humdrum file into the notefile format used by Melisma, this program is called kern2melisma, and it is the first step in the workflow of a functional harmonic analysis from a humdrum score.
@@ -111,8 +111,7 @@ This section describes different issues presented and addressed during this work
 	\subsection{Annotation issues}
     \subsubsection{Corner cases}
       \begin{itemize}
-        \item Op.20 No.4 - IV: mm.6
-		"The augmented triad on the fifth scale degree may be used as a substitute dominant, and may also be considered as ♭III+,[2] for example in C: V+ = G–B–D\♯, ♭III+ = E♭–G–B♮, and since in every key D\♯ = E♭, they are the same three pitches.", Theories and Practice of Harmonic Analysis. p. 35. ISBN 0-7734-9917-2.
+        \item Op.20 No.4 - IV: mm.6 "The augmented triad on the fifth scale degree may be used as a substitute dominant, and may also be considered as bIII+, for example in C: V+ = G-B-D\#, bIII+ = Eb-G-B, and since in every key D\# = Eb, they are the same three pitches.", Theories and Practice of Harmonic Analysis. p. 35. ISBN 0-7734-9917-2.
       \end{itemize}
 		\subsubsection{Non-expert analysis}
     Most of the analyses were done by me, I am not an expert.
