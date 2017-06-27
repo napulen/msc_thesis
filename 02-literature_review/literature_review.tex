@@ -37,6 +37,12 @@ Harmonic analysis could be seen from different perspectives, the first one I wou
 			\item Missing pitches in the spelling of a full chord, which can be deduced from the context.
 			\item Ornamental notes. Maxwell proposes specific rules to deal with these notes, but according to Temperley, neither Maxwell's or Winograd's are good enough to correctly detect ornamental notes.
     \end{itemize}
+    Maxwell's approach, in general, represents the powerful and sophisticated machinery of rule-based approaches, as well as their complexity.
+    \subsubsection{Temperley and the Tonal Pitch Class (TPC)}
+    Probably the most relevant approach in automatic harmonic analysis for this work, is the approach from David Temperley described in 1997 \cite{temperley1997algorithm}, as it was extended afterwards by his work in key estimation algorithms and which culminated in the implementation of the Melisma Music Analyzer, in conjunction with Daniel Sleator.
+    Inspired by the cognitive experiments by Carol Krumhansl \cite{krumhansl2001cognitive}, the aim of Temperley is to produce an algorithm that models the human process of harmonic analysis done by a trained expert, and to take it as indicative of the analysis produced subconsciously by listeners in general.
+
+		The traiditional functional harmonic analysis done in music theory courses uses the \emph{roman numerals} notation to segment a piece of music, labeling it with symbols indicating the relationship between each root to the current key. Temperley steps forward in the definition of the problem of harmonic analysis, decomposing the task into two subtasks: \emph{root finding} and \emph{key finding}. Temperley claims then that functional harmonic analysis could be broken down into these subtasks, focusing at first in root finding, assuming that this task can be done independently to key finding. Root finding basically consists of dividing a piece into segments and label each of them with a root. 
 
     % Rohrmeier 2008
     This approach also uses MIDI files as input, getting rid of pitch-spelling information, it also seems to be very simplistic as it only extends Melisma in providing major or minor modes for the root analysis. Experiments are done over different kinds of music, which is outside the constraints of classical music that we have set.
