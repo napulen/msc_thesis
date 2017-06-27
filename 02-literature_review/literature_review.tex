@@ -1,12 +1,42 @@
 \chapter{Literature review}
-
 \section{Harmonic analysis in music theory}
+Harmonic analysis could be seen from different perspectives, the first one I would like to address is how it was conceived and modeled by music theorists. Starting with the french composer Jean-Philippe Rameau (1683-1764), until the theory from the german theorist Hugo Riemann (1849-1919) in the late nineteenth century.
   \subsection{Fundamental bass}
-  Rameau's theory, the first theory. It was published in 1722, and considers the movement of the bass as the most important harmonic consideration, and from which most harmonic implications can be inferred.
+  The original idea by Rameau was based on the movement of the bass note, the so called \emph{Fundamental Bass}, which constructed rules and principles of how the movement of a bass note determined also the movement of the harmony. Rameau's theory limited the dictionary of chords to triads and some special cases of seventh chords, and considered chord inversions for the first time, from which the core concept of harmonic root arises and suggests that the bass note could be serving a harmonic root located in the superior voices. This theory is pioneer in separating the melodic movement and coincidence in time from counterpoint, and looking at the music from a vertical perspective, a vision that spread in the following periods of western art music.
   \subsection{Root succession tables}
   Appears in several textbooks, e.g., Walter Piston's Harmony book. Not really based in scientific data, but somewhat validated by scientific research now.
   \subsection{Figured bass}
-  Used mainly for performance. The least common target output for automatic approaches.
+  Used mainly for performance. The least common target output for automatic approaches. The only approach that targets to output a figured bass analysis is that of Barthelemy.
+    \subsubsection{Barthelemy, 2001}
+    The model from barthelemy uses the figured bass as the desired type of harmonic analysis output.
+
+		maxwell1992expert system has more than 50 rules. Reducing the vertical sonorities into a chord sequence, then deciding for key changes. The decision rules from this model are very difficult to adapt, and it has difficulty dealing with harmonic notes that are not presented vertically but horizontally.
+
+		winograd1968linguistics approach requires a preliminary hand-made conversion of the original score and turn it into a sequence of four-part perfect chords. This means that during this stage non-harmonic tones are eliminated.
+
+		The system from ulrich1977analysis developed a functional analysis, identifying the function of each chord in a musical piece. The input for this model was also a sequence of chords and it incorporated the detection of keys.
+
+		pachet2000computer approach is an extension to the work of ulrich1977analysis, input is similarly a sequence of chords. It outputs a hierarchical description of modulations.
+
+	barthelemy2001figured divides the problem of harmonic analysis in four fundamental issues:
+	\subsubsection{Ornamental notes and incomplete harmony}
+			Ornamental notes to be considered include: appoggiaturas, suspensions, passing tones, among others.
+			Harmony is in many times stated incomplete, meaning it lacks a number of notes from the chord function that the span of music implies, and algorithms have to deal with this problem.
+	\subsubsection{Ambiguities}
+			Sometimes a \emph{false} harmonic function could appear to be the answer, but this should be addressed by understanding the context of the music.
+	\subsubsection{Non-regularity of harmony}
+			The rhythm in harmony is irregular. It cannot be assumed to be constant at any moment of the analysis.
+	\subsubsection{Non-universality of harmony rules}
+			Music theory is very ambiguous, is full of exceptions and decisions that should be made in judgement of the analyst.
+	\subsubsection{Description of harmonic reduction}
+	\subsubsection{Evaluation}
+		The system does not consider pedal notes. Also, other ornamental notes that are followed not by conjunct movement but skips are also not detected.
+
+		There are problems taking the context into account, but the resolution of ambiguities is still incomplete.
+
+		It will also fail in a very simple sample where melodic imitation indicates a reexposition, easily recognizable by humans, but difficult to solve with this approach.
+
+		barthelemy2001figured compare their results to those of maxwell1992expert, pardo2000automated and temperley1997algorithm. All the samples have better analysis for certain measures and drawback analyses for others.
   \subsection{Functional harmony}
   Based in Hugo Riemann's theory, it is the focus of this work. It contains more information about tonal context than fundamental bass or root succession theories.
 \section{Harmonic analysis in computing}
@@ -16,11 +46,20 @@
     It could be said that the main difference between analyzing classical music or jazz are musical considerations. The harmonic common practices and dictionary of chords are different. However, hierarchically, both types of music are tonal.
     \subsubsection{Similarities}
     There are systems that claim to be agnostic of the music style, these models are usually based on pitch-class sets. Other common ground between classical music and jazz lies in the approaches based in grammars.
+
+    %Scholz 2005
+    This working is very oriented to Jazz music, however, the authors claim it was meant to analyze any music whose harmony is functional. The model is done following and extending the ideas from pachet2000computer to recognize modal borrowing and secondary dominants. It was implemented in Java, however, no url is provided to the implementation of the approach.
+    %scholz 2005
   \subsection{Type of model}
   Some other way to classify approaches is by the underlying technology used for the analysis
     \subsubsection{Rule-based}
     It is one of the first approaches
     \subsubsection{Probabilistic}
+
+    % Rohrmeier 2008
+    This approach also uses MIDI files as input, getting rid of pitch-spelling information, it also seems to be very simplistic as it only extends Melisma in providing major or minor modes for the root analysis. Experiments are done over different kinds of music, which is outside the constraints of classical music that we have set.
+    % Rohrmeier 2008
+
     Most of the rule-based approaches evolved towards probabilistic models. One important example is the Temperley algorithm that is used for this work, which was eventually developed as a Bayesian model in the second version of the Melisma Music Analyzer. However, this has never made out all the way to functional harmonic analysis, that is why I am remaining with the first approach.
     \subsubsection{Grammar-based}
     The first approach, from Winograd is a grammar based approach. Recently, these approaches have been used to find hierarchical relationships between chords.
@@ -30,6 +69,11 @@
     Barthelemy is the only one.
     \subsubsection{Functional harmonic analysis}
     Temperley-Sleator-Sapp, Raphael, Illescas
+
+    % Raphael
+    This model is one of the few pure-functional harmonic analysis approaches, oriented towards the analysis of common-practice music. The idea is simple and the arbitrary assumptions simplify the parameters of the model. Some constant that remains as in previous models is the fact that it gets rid of all the pitch-spelling information and replaced for solely pitch information. This model, unlike Temperley, does not try to reconstruct the pitch spelling information back by any algorithmic means. I believe this information could be added, and in the words of raphael2003harmonic, it is an obvious extension to the model.
+    % / Raphael
+
     \subsubsection{Tonal hierarchies}
     Rohrmeier, Bas de Haas
 \section{String quartets}
