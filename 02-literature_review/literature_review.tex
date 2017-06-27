@@ -56,24 +56,27 @@ Harmonic analysis could be seen from different perspectives, the first one I wou
 
     Another quite important effort in the statistical domain includes the work from Martin Rohrmeier \cite{rohrmeier2008statistical}, who uses a heuristic method of segmentation. Analyzes distributions of single pitch-class-sets, chord classes and pitch-class-sets transitions. One of the goals of Rohrmeier was the research of \emph{syntacticality} in harmony. The final goal is to produce descriptive analyses of harmonic structure based on an empirical approach. The choice of the corpus is, similarly to others, music from Joahann Sebastian Bach. In his case, chorales, because they constitute a large and coherent set of pieces regarding style and composition technique. Rohrmeier claims that this work is pioneer in the statistical analysis of a corpus for the purpose of finding features of tonal harmony. According to the results of Rohrmeier, the most frequent occurrences of pitch-class-sets in this music are those of tonic, dominant and subdominant chords. This would be expected and helps to reinforce those scale-degree theories that describe harmonic movement with transition tables of scale degrees. The results from this research, apart from being interesting in confirming music-theory beliefs regarding common chords and transitions in tonal music, could also be replicated in a different corpus to target its particular common chords and transitions.
 
-    Most of the rule-based approaches evolved towards probabilistic models. One important example is the Temperley algorithm that is used for this work, which was eventually developed as a Bayesian model in the second version of the Melisma Music Analyzer. However, this has never made out all the way to functional harmonic analysis, that is why I am remaining with the first approach.
     \subsubsection{Grammar-based}
-    The first approach, from Winograd is a grammar based approach. Recently, these approaches have been used to find hierarchical relationships between chords.
-  \subsection{Target output}
-  Probably the most "musical" way of classifying the harmonic analysis, is by the target output the model is expected to produce.
-    \subsubsection{Figured bass}
-    Barthelemy is the only one.
-    \subsubsection{Functional harmonic analysis}
-    Winograd, History aside, the input format for the program is not convenient, and as presented by future researchers, the algorithm has problems with certain cases, such as those involving arpeggiations. It cannot be denied that it this work marked a checkpoint and reference for all future work in harmonic analysis.
+    Three years after his statistical work in Bach Chorales, Martin Rohrmeier brought back the use of grammars to study the underlying structure of musical harmony \cite{rohrmeier2011towards}, which inspired future works by other researchers in the field, specially towards analyzing jazz music. In this work, Rohrmeier claims that the structure of harmonic progressions exceeds the simplicity of a markovian transition table, and he proposes a set of phrase-structure grammar rules. For this purpose, the hierarchical analysis from the music-theory approach done by \cite{kostka1995tonal} is presented, with the belief that it can be brought to a closer formalization. Rohrmeier presents a tree representation of a chord sequence, using two principles:
+    \begin{itemize}
+			\item Chords have dependencies and the existence of one sometimes requires the existence of another
+			\item Chords have functions, these functions can be realized by a set of chords.
+		\end{itemize}
+    The system comprises 27 rules for the generation of a grammar, this helps to model common-practice music as well as jazz music. The output of this algorithm is a hierarchical tree of the functions and dependencies of the chords. The level of detail from this work to model every special case of the harmonic language is remarkable, as careful attention has been put trying to comprehend distinct kinds of cadences, chords and modulations in the model.
 
-    Temperley-Sleator-Sapp, Raphael, Illescas
+    This work was eventually retaken and implemented by Bas de Haas \cite{de2013automatic} using chord labels as input for the system.
 
-    % Raphael
-    This model is one of the few pure-functional harmonic analysis approaches, oriented towards the analysis of common-practice music. The idea is simple and the arbitrary assumptions simplify the parameters of the model. Some constant that remains as in previous models is the fact that it gets rid of all the pitch-spelling information and replaced for solely pitch information. This model, unlike Temperley, does not try to reconstruct the pitch spelling information back by any algorithmic means. I believe this information could be added, and in the words of raphael2003harmonic, it is an obvious extension to the model.
-    % / Raphael
+    As discussed previously, different methods of performing harmonic analysis oftenly have different outputs in mind, considering this, I will mention that even if the hierarchical representations of harmony appear interesting and promising, the aim for this work is to provide music scores as input and produce an automatic harmonic analysis as output. In this sense, the most relevant approaches can be reduced simply to those approaches who pretend to output exactly that.
 
-    \subsubsection{Tonal hierarchies}
-    Rohrmeier, Bas de Haas
+  \subsection{Functional harmonic analysis}
+    From the previously mentioned efforts of harmonic analysis, those that explicitly pretend to output a functional harmonic analysis from a music score, are the following:
+    \begin{itemize}
+      \item Winograd, 1968 \cite{winograd1968linguistics}
+      \item Maxwell, 1992 \cite{maxwell1992expert}
+      \item Temperley, 1997 \cite{temperley1997algorithm}
+      \item Raphael, 2003 \cite{raphael2003harmonic}
+    \end{itemize}
+    The decision over the approach used as the baseline for this work is that of David Temperley, simply put, because it is the most mature approach in terms of reproducibility and applicability to large volumes of music.
 \section{String quartets}
   \subsection{Musical form in harmony}
 \section{Joseph Haydn}
