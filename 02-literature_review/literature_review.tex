@@ -7,36 +7,7 @@ Harmonic analysis could be seen from different perspectives, the first one I wou
   Appears in several textbooks, e.g., Walter Piston's Harmony book. Not really based in scientific data, but somewhat validated by scientific research now.
   \subsection{Figured bass}
   Used mainly for performance. The least common target output for automatic approaches. The only approach that targets to output a figured bass analysis is that of Barthelemy.
-    \subsubsection{Barthelemy, 2001}
-    The model from barthelemy uses the figured bass as the desired type of harmonic analysis output.
-
-		maxwell1992expert system has more than 50 rules. Reducing the vertical sonorities into a chord sequence, then deciding for key changes. The decision rules from this model are very difficult to adapt, and it has difficulty dealing with harmonic notes that are not presented vertically but horizontally.
-
-		winograd1968linguistics approach requires a preliminary hand-made conversion of the original score and turn it into a sequence of four-part perfect chords. This means that during this stage non-harmonic tones are eliminated.
-
-		The system from ulrich1977analysis developed a functional analysis, identifying the function of each chord in a musical piece. The input for this model was also a sequence of chords and it incorporated the detection of keys.
-
-		pachet2000computer approach is an extension to the work of ulrich1977analysis, input is similarly a sequence of chords. It outputs a hierarchical description of modulations.
-
-	barthelemy2001figured divides the problem of harmonic analysis in four fundamental issues:
-	\subsubsection{Ornamental notes and incomplete harmony}
-			Ornamental notes to be considered include: appoggiaturas, suspensions, passing tones, among others.
-			Harmony is in many times stated incomplete, meaning it lacks a number of notes from the chord function that the span of music implies, and algorithms have to deal with this problem.
-	\subsubsection{Ambiguities}
-			Sometimes a \emph{false} harmonic function could appear to be the answer, but this should be addressed by understanding the context of the music.
-	\subsubsection{Non-regularity of harmony}
-			The rhythm in harmony is irregular. It cannot be assumed to be constant at any moment of the analysis.
-	\subsubsection{Non-universality of harmony rules}
-			Music theory is very ambiguous, is full of exceptions and decisions that should be made in judgement of the analyst.
-	\subsubsection{Description of harmonic reduction}
-	\subsubsection{Evaluation}
-		The system does not consider pedal notes. Also, other ornamental notes that are followed not by conjunct movement but skips are also not detected.
-
-		There are problems taking the context into account, but the resolution of ambiguities is still incomplete.
-
-		It will also fail in a very simple sample where melodic imitation indicates a reexposition, easily recognizable by humans, but difficult to solve with this approach.
-
-		barthelemy2001figured compare their results to those of maxwell1992expert, pardo2000automated and temperley1997algorithm. All the samples have better analysis for certain measures and drawback analyses for others.
+  
   \subsection{Functional harmony}
   Based in Hugo Riemann's theory, it is the focus of this work. It contains more information about tonal context than fundamental bass or root succession theories.
 \section{Harmonic analysis in computing}
