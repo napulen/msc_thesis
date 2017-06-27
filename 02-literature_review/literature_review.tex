@@ -69,20 +69,20 @@ Harmonic analysis could be seen from different perspectives, the first one I wou
     As discussed previously, different methods of performing harmonic analysis oftenly have different outputs in mind, considering this, I will mention that even if the hierarchical representations of harmony appear interesting and promising, the aim for this work is to provide music scores as input and produce an automatic harmonic analysis as output. In this sense, the most relevant approaches can be reduced simply to those approaches who pretend to output exactly that.
 
   \subsection{Functional harmonic analysis}
-    From the previously mentioned efforts of harmonic analysis, those that explicitly pretend to output a functional harmonic analysis from a music score, are the following:
-    \begin{itemize}
-      \item Winograd, 1968 \cite{winograd1968linguistics}
-      \item Maxwell, 1992 \cite{maxwell1992expert}
-      \item Temperley, 1997 \cite{temperley1997algorithm}
-      \item Raphael, 2003 \cite{raphael2003harmonic}
-    \end{itemize}
-    The decision over the approach used as the baseline for this work is that of David Temperley, simply put, because it is the most mature approach in terms of reproducibility and applicability to large volumes of music.
-\section{String quartets}
-  \subsection{Musical form in harmony}
-\section{Joseph Haydn}
-  \subsection{Who was}
-  \subsection{What music does he represent}
-  \subsection{His string quartets}
-    \subsubsection{Op.20, Sun quartets}
+  From the previously mentioned efforts of harmonic analysis, those that explicitly pretend to output a functional harmonic analysis from a music score, are the following:
+  \begin{table}[]
+    \centering
+    \caption{My caption}
+    \label{my-label}
+    \begin{tabular}{llll}
+      Approach & Year & Implementation & Availability \\
+      Winograd & 1968 & LISP & No \\
+      Maxwell & 1992 & LISP & No \\
+      Temperley & 1997* & C & Yes \\
+      Raphael & 2003 & C & Partial \\
+      Illescas & 2008 & Java & Partial
+    \end{tabular}
+  \end{table}
+  From the output simple table, results evident that the decision over the approach used as the baseline for this work performing an automatic harmonic analysis is that of David Temperley, which is related to the Melisma Music Analyzer. Simply put, because it is the most mature approach in terms of reproducibility and applicability to large volumes of music, like the string quartet dataset used in this work, which will be described later.
 
 \newpage
