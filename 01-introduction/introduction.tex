@@ -49,7 +49,7 @@ Therefore, as stated by this definition, the process of harmonic analysis compri
   \item Investigate their relevant functions
 \end{itemize}
 
-For breaking down the steps of the analysis, we could use a fragment of a musical score. Figure \ref{fig:harmony} remarks the first beat of the second measure, where three instruments play notes together. Every instance of this simultaneities represents harmony. If these harmonies are clustered and interpreted, we come up with harmonic structures, as in Figure \ref{fig:harmonic-structures}.
+For breaking down the steps of the analysis, we could use a fragment of a musical score. Figure \ref{fig:harmony} remarks the first beat of the second measure, where three instruments play notes together. Every instance of these simultaneities represents harmony. If these harmonies are clustered and interpreted, we come up with harmonic structures, as in Figure \ref{fig:harmonic-structures}.
 
 In order to satisfy the second step of harmonic analysis, we could resolve this interpretation of harmonic structures into some sort of simpler representation. Historically, music theorists performing these sort of harmonic analysis will most likely come with a system of labels that represent the meaning of the harmonic structures. There is not a single labeling system for this purpose. Figure \ref{fig:harmonic-labels} shows three possible representations for the harmonic structures of the same music excerpt presented previously.
 
@@ -62,10 +62,17 @@ In order to satisfy the second step of harmonic analysis, we could resolve this 
 
 Any of these three representations would suffice the second step of harmonic analysis. The chord labels in the first representation are what is commonly seen to label harmonic structures in Jazz and pop music. The figured bass from the second representation was very popular previous to the classical period, and it was intended to aid accompanyists who played in chamber ensembles, e.g., it helped a harpsichordist to "fill-in" the accompaniment during the performance when only one note was given in the score. The third representation using roman numerals emerged previously but consolidated with the theoretical work of Hugo Riemann, and its purpose is mainly of analysis. For this work, I have selected to use the third kind of representation, because it is the one that helps the better in the third step of the process, \emph{specifying the function of the harmonic labels}.
 
-In fact, it could be claimed that in the roman numeral labels themselves, the whole process of harmonic analysis gets summarized, as the clustering and interpretation of harmonic structures will be characterized by the appearance of harmonic labels, and in the case of roman numeral labels, the function of that harmonic structure is implicitly described. Further discussion of this harmonic representations is given in the literature review section.
+In fact, it could be claimed that in the roman numeral labels themselves, the whole process of harmonic analysis gets summarized, as the clustering and interpretation of harmonic structures will be characterized by the appearance of harmonic labels, and in the case of roman numeral labels, the function of that harmonic structure is implicitly given by the roman numeral degree. Further discussion of this harmonic representations is given in the literature review section.
 
 \section{Automatic harmonic analysis}
-Once the steps in the process of performing a harmonic analysis and the selected labels for harmonic structures are specified, I will now define a system of automatic harmonic analysis as a piece of software that given a fragment of music as input, will
+Once the steps in the process of performing a harmonic analysis and the selected labels for harmonic structures are specified, I will now define a system of automatic harmonic analysis as a piece of software that given a fragment of music as input, will output the same piece of music, with roman numeral labels appended to it, as Figure \ref{fig:automatic-harmonic-analysis} shows.
+
+\begin{figure}[h]
+  \caption{Three different harmonic labeling representations of a musical fragment}
+  \label{fig:harmonic-labels}
+  \centering
+    \includegraphics[width=1.0\textwidth]{01-introduction/figures/4}
+\end{figure}
 
 \section{Motivation}
 The main reason why it would be benefical for musicians and musicologists to automate a harmonic analysis is because it takes a considerable amount of time and knowledge to perform these analyses. In practice, students at conservatoires often learn the guidelines of harmonic analysis during a specialized course of Harmony. Such a course could extend to several years, making it a difficult discipline to learn fast for a beginner. Even in the case of experts, it might take relatively long time to analyze a piece of music in terms of harmony, which makes the task of automating it valuable even for the expert theorist.
