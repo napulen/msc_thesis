@@ -1,4 +1,5 @@
 \chapter{Introduction}
+\label{chap:introduction}
 In the traditional sense, harmonic analysis relates to a set of music theory studies that pretend to describe the relationship of simultaneous sonorities and generalize rules of how each of the sonorities involved should move to facilitate and embellish these simultaneous sounds.
 
 It is difficult, however, to give a precise definition of where the task of automatic harmonic analysis starts and finishes. As will be discussed in the literature review, different researchers have made different characterizations of the problem, sometimes binding these characterizations closely to the mathematical tools they have used to approach the problem, in other cases to the type of music that they pretend to analyze, and in other cases due to other circumstances. For this particular work, I intend to define harmonic analysis based in two simple definitions, and afterwards, the outcome definition will help to describe which are the expected inputs and outputs of an automatic harmonic analysis system.
@@ -74,10 +75,10 @@ Once the steps in the process of performing a harmonic analysis and the selected
     \includegraphics[width=1.0\textwidth]{01-introduction/figures/4}
 \end{figure}
 
-There is, however, the problem of choosing among the multiple ways in which this score can be represented. For this work, a symbolic representation in the humdrum format was chosen as the input format for this system. Similarly, the output consists of the same humdrum representation with an additional spine in the \emph{**harm} syntax. The justification behind this decision will be described in the second chapter of this report.
+There is, however, the problem of choosing among the multiple ways in which this score can be represented. For this work, a symbolic representation in the humdrum format was chosen as the input format for this system. Similarly, the output consists of the same humdrum representation with an additional spine in the \emph{**harm} syntax. The justification behind this decision will be described in \ref{chap:dataset}.
 
 \section{Motivation}
-The main reason why it would be benefical for musicians and musicologists to automate a harmonic analysis is because it takes a considerable amount of time and knowledge to perform these analyses. In practice, students at conservatoires often learn the guidelines of harmonic analysis during a specialized course of Harmony. Such a course could extend to several years, making it a difficult discipline to learn fast for a beginner. Even in the case of experts, it might take relatively long time to analyze a piece of music in terms of harmony, which makes the task of automating it valuable even for the expert theorist.
+Students at conservatoires often learn the guidelines of harmonic analysis during a specialized course of Harmony. Such a course could extend to several years, making it a difficult subject to be learnt fast for a beginner. Even in the case of experts, it might take relatively long time to analyze a piece of music in terms of harmony, which makes the task of automating it valuable even for the expert theorist.
 
 \section{Objectives}
 This work pretends to reproduce and apply the current approach for automatic functional harmonic analysis used over the KernScores corpora, and apply it to a specific set of string quartets from Joseph Haydn. Once these automatic analyses are performed, they will be compared to manual annotations over the same set of string quartets.
