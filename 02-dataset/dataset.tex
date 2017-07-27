@@ -1,6 +1,55 @@
 \chapter{Dataset}
 \label{chap:dataset}
-The dataset used for this work is a novell dataset created as part of the final output of this work. It consists of 24 musical scores corresponding to six string quartets, Op.20, written by Joseph Haydn. These quartets are commonly known as the \emph{Sun quartets}. The dataset lies in the following repository \url{https://github.com/napulen/haydn_op20_harm}.
+The dataset used for this work is a novell dataset created as part of the final output of this work. It consists of 24 musical scores corresponding to six string quartets, Op.20, written by Joseph Haydn. These quartets are commonly known as the \emph{Sun quartets}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccc}
+Movement & Tempo & Musical form \\
+\multicolumn{3}{l}{Op.20 No.1} \\
+I & Allegro Moderato & Sonata \\
+II & Minuetto. Allegretto & Minuet \\
+III & Affettuoso e sostenuto & Aria \\
+IV & Finale. Presto & Allegro \\
+\multicolumn{3}{l}{Op.20 No.2} \\
+I & Moderato & Sonata \\
+II & Adagio & Aria* \\
+III & Minuetto. Allegretto & Minuet \\
+IV & Fuga a 4 Soggetti & Fuga \\
+\multicolumn{3}{l}{Op.20 No.3} \\
+I & Allegro con Spirito & Sonata \\
+II & Minuetto. Allegretto & Minuet \\
+III & Poco Adagio & Aria \\
+IV & Finale. Allegro Molto & Sonata \\
+\multicolumn{3}{l}{Op.20 No.4} \\
+I & Allegro di Molto & Sonata \\
+II & Un poco Adagio Affettuoso & Theme and variations \\
+III & Allegretto alla zingarese & Minuet \\
+IV & Presto scherzando & Sonata \\
+\multicolumn{3}{l}{Op.20 No.5} \\
+I & Allegro moderato & Sonata \\
+II & Minuetto & Minuet \\
+III & Adagio & Siciliana \\
+IV & Finale: Fuga a due Soggetti & Fuga \\
+\multicolumn{3}{l}{Op.20 No.6} \\
+I & Allegro di Molto e Scherzando & Sonata \\
+II & Adagio, Cantabile & Sonata \\
+III & Minuetto. Allegretto & Minuet \\
+IV & Fuga a 3 Soggetti. Allegro & Fuga
+\end{tabular}%
+}
+\caption{The 24 music pieces within Haydn's Op.20}
+\label{table:op20}
+\end{table}
+
+The comprehensive works included in Op.20 is listed in \autoref{table:op20}, as can be seen, among these 24 pieces there are several sonata, fugues, minuets, theme and variations and aria musical forms. This variety of musical forms was one important reason to create a harmonic analysis dataset out of these string quartets.
+
+
+
+The dataset lies in the following repository \url{https://github.com/napulen/haydn_op20_harm}.
 
 \section{String quartet}
 
