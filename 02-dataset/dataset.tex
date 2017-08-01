@@ -127,5 +127,9 @@ The **harm syntax is a dedicated syntax for annotating roman numerals, which is 
 
 This example was taken from the dataset repository and thus this is how the annotations look in the dataset. The first appended column (spine, in the language of the humdrum grammar) represents the roman numeral labels, while the second is left for clarifications, exaplanations and any comment that is worth mentioning during certain point of the analysis. The only meaningful difference against the annotations in the dataset is that these have been preppended to the humdrum file instead of appended, as this allowed for easier parsing of the files.
 
+In summary, as 19 out of 24 musical scores already exist in the \href{http://kern.ccarh.org/}{KernScores} website, it was a logical decision to complete the remaining pieces in the same format rather than starting a transcription effort from scratch. Once with the complete set of musical scores, a roman numeral analysis labeling has to be appended to these scores, one simple election to this purpose is the **harm syntax, comprehending roman numeral analysis and compatible with the humdrum grammar.
+
+With this assumptions, now the automatic harmonic analysis system consists specifically in a humdrum score for input and the same humdrum score with an annotated **harm spine as the output. In the next chapter, I will discuss briefly the algorithms that have been developed for automatic harmonic analysis and to present the one used for this work. 
+
 
 \newpage
