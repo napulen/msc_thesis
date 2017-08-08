@@ -1,5 +1,26 @@
 \chapter{Evaluation}
 \label{chap:evaluation}
-
+\section{Evaluation files}
+	They are valid Humdrum files with 2 pairs of **harm **root spines
+  \subsection{Generating}
+  Take the manual and automatic, extract the harmonic root using harm2kern, append and filter
+  \subsection{Rhythmic normalization}
+  Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
+	\subsection{Using Humdrum-extras}
+  Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
+\section{Comparing}
+	\subsection{Resolving root from **harm expression}
+  harm2kern for now
+	\subsection{Ignored annotations}
+  Ignoring 'Chr' annotations. See the issues section.
+\section{Extracting final results}
+	\subsection{Total time units}
+  The time unit represents the shortest note for that particular score. The scores are normalized to that note as the rhythmic "atom", irrelevant of its value.
+	\subsection{Percentage}
+  Every time unit is matched between manual and automatic file, the percentages are computed considering the total number of "time units" in the score, and the ones that match identically in harmonic root between both files.
+	\subsection{Distribution of degrees}
+  Additional statistics are provided of how the tonal degrees distribute per each score in both, manual and automatic files.
+	\subsection{Resolution of degree in secondary functions}
+  This is a special problem to consider when evaluating functional harmonic analysis. Every subfunction represents a diatonic degree of the current key, an uppercase diatonic degree represents the major mode tonality of that degree, a lowercase diatonic degree represents the minor mode tonality of that degree.
 
 \newpage
