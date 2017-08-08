@@ -1,4 +1,70 @@
 \appendix
-\chapter{First Appendix} %Appendix A
+\chapter{Issues} %Appendix A
+This section describes different issues presented and addressed during this work
+	\section{Transcription issues}
+		\subsection{Transcription of the missing files from Op.20}
+    \begin{itemize}
+    \item Op.20 No.4 - I: mm.127
+		Replacing E in the first beat of the second violin, for E\#
+    \end{itemize}
+    \subsection{Corrections over the Altmann Edition}
+    \begin{itemize}
+    \item Op.20 No.2 - I: mm.29
+    In the Altmann edition, the bass goes to E flat after a Dominant Seventh chord, however, in other editions it moves to the tonic, it makes more sense to the harmonic context to move towards the tonic, therefore, ignoring the spelling of the Altmann Edition for this measure and considering the bass as heading to the tonic in the third beat of the measure.
+    \end{itemize}
+		\subsection{Corrections over previous KernScores corpus}
+    \begin{itemize}
+    \item Op.20 No.4 - I: mm.124
+    Changing the spelling of the viola from F natural to E sharp as it explains better a dominant seventh chord, and also, it appears like that in the Altmann Edition.
 
+    \item Op.20 No.4 - IV: mm.24
+    Adding an e natural to the first violin. It matches what is written in the Altmann Edition, and it makes the harmony clearer, from a g-diminished triad to a fully diminished e natural seventh chord, which explains better the f chord in the next measure
+
+    \item Op.20 No.4 - IV: mm.92 \& mm.94
+    Correcting wrong spelling of a note in the viola
+
+    \item Op.20 No.6 - II: mm.5
+    Changing the D in the fourth beat of the measure for a B natural, which matches the Altmann Edition
+    \end{itemize}
+	\section{Annotation issues}
+    \subsection{Corner cases}
+      \begin{itemize}
+        \item Op.20 No.4 - IV: mm.6 "The augmented triad on the fifth scale degree may be used as a substitute dominant, and may also be considered as bIII+, for example in C: V+ = G-B-D\#, bIII+ = Eb-G-B, and since in every key D\# = Eb, they are the same three pitches.", Theories and Practice of Harmonic Analysis. p. 35. ISBN 0-7734-9917-2.
+      \end{itemize}
+		\subsection{Non-expert analysis}
+    Most of the analyses were done by me, I am not an expert.
+		\subsection{Fugues are too contrapunctual}
+    The fourth movements of Op.20 No.2, No.5 and No.6 are fugues, these were some of the most difficult scores to analyze, mainly because they are very contrapunctual.
+		\subsection{Lower quality analysis}
+    These two scores were transcribed directly from the manual analysis done in paper, I did not add inversions information neither double-checked the analysis. Extra attention should be put, therefore, as I transcribed directly from the annotations of Rafael Caro. Neither Rafael or I made strict annotations of chord inversion or chord attribute in our manual annotations in pen and paper, however, I was careful trying to annotate this information while transcribing to the harm syntax. I transcribed these last two movements without any judgement of my own in that matter, and I might expect inversion and chord types of these annotations missing. I chose Rafael's annotations because he appeared to be clearer in determining the tonal center of a particular section of music than me, while I tend to refuse to move to mark any modulation unless there is a clear justification, either by harmonic or structural context. Considering the lack of inversions and chord attributes, I believe it is better to have his more verbose annotations in terms of tonal center.
+    \begin{itemize}
+    \item Op.20 No.5 - I
+		\item Op.20 No.6 - I
+    \end{itemize}
+		\subsection{Flat -VII annotated as VII}
+    While annotating the scores, I marked the lowered seventh degree of the minor mode simply as VII, while it should be a lowered seventh -VII. It could affect the results.
+	\section{Workflow issues}
+    Lots of issues.
+		\subsection{Source code coming from different sources}
+    The main problem is that the source code comes from different repositories, and it is difficult in terms of reproducibility to put everything together in one place and guarantee it will work.
+		\subsection{Melisma array sizes}
+    There was an "error" in the melisma music analyzer. The size of static structures like arrays, have been hardcoded, in long scores like Op.20 No.3 - I, the program reached buffer overflow and crashed without completing the analysis, I fixed my version of the Melisma Music Analyzer programs to correct this, but this code is not public, as I am not aware of the license of the Melisma source code. If attempting to run the analysis in these files, the programs will crash unless this is fixed.
+    \begin{itemize}
+    \item Op.20 No.4 - IV
+    \item Op.20 No.3 - I
+    \item Op.20 No.5- I
+    \end{itemize}
+		\subsection{tsroot harmony2humdrum and key2humdrum}
+    tsroot had a different default tempo than kern2melisma, therefore, when running the analysis over files with no explicit tempo information, the result is incorrect. I fixed this in my version of the humdrum extra tools, you can download it from my fork repository. At the moment of this publication, the fix for this has not been merged in the main project repository.
+	\section{Evaluation issues}
+		\subsection{Chr chords are ignored}
+    I am ignoring the annotations denoted as \emph{Chr} by the automatic analysis, instead of denoting a change of harmony after encountering this tag, I am preserving the previous harmonic root. This is probably wrong and should be addressed in a future evaluation.
+		\subsection{Resolution of degree in secondary functions}
+    Though I described the process to resolve a subfunction, I did not write this code with my harmparser. In practice, I delegated this process to the harm2kern program that is already available in the humdrum extra tools. I did not check if the parser from harm2kern is doing this process as I described it. It might be somewhat different.
+	\section{Bugfixes}
+  As the result of this work, a few problems were addressed
+		\subsection{tsroot --meldir and --midir args}
+    The implementation of tsroot has a hardcoded default value of the meldir and midir directories, when trying to change it with console arguments, the program crashed as there was some issue in the translation of the C string. This problem was detected and now it is corrected in the latest version of humdrum extras. Special thanks to Craig Sapp who double-checked this after I posted in the humdrum forum
+		\subsection{tsroot tempo correction}
+    As stated previously, there is a different default tempo in the tsroot program than the kern2melisma program, this means if a file has not an explicit tempo indication, the output analysis is incorrect. This was the case for the entire dataset of Op.20, so detecting and correcting this issue was crucial for this work. This fix has not been until this point merged into the official humdrum extra repository.
 \newpage
