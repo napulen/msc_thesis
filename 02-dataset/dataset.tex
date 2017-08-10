@@ -62,7 +62,7 @@ These string quartets also remain less experimental than later works, e.g., Op.3
 
 \section{Creating the dataset}
 \subsection{Extending KernScores content}
-In order to create the dataset used in this work, I based in the current symbolic scores that can be found in the \href{http://kern.ccarh.org/}{KernScores} website \cite{kernscores}. This website already hosts 19 out of the 24 humdrum scores comprehending the Op.20 string quartets, so the effort left for having the entire Op.20 is to transcribe the musical pieces shown in \autoref{table:missing-op20} in a similar symbolic representation.
+In order to create the dataset used in this work, I based in the current symbolic scores that can be found in the \href{http://kern.ccarh.org/}{KernScores} website \cite{kernscores}. This website already hosts 19 out of the 24 musical scores comprehending the Op.20 string quartets, so the effort left for having the entire Op.20 is to transcribe the musical pieces shown in \autoref{table:missing-op20} in a similar symbolic representation. These musical scores in \href{http://kern.ccarh.org/}{KernScores} are encoded in the \emph{humdrum} format, which I will describe now.
 
 \begin{table}[tbp]
 \centering
@@ -79,15 +79,15 @@ Op.20 No.4 - II. Un poco Adagio Affettuoso \\ \hline
 \label{table:missing-op20}
 \end{table}
 
-\subsection{Manual annotations}
-Once the symbolic scores are complete, the next step in the creation of the dataset involves a manual harmonic analysis of each of the pieces. As presented during \autoref{chap:introduction}, the expected output of the system is an annotated version in the form of a roman numeral analysis. Therefore, the manual analyses performed over the 24 pieces of the dataset have been done using these roman numeral analysis labels as well.
-
-The best way to digitally append a roman numeral analysis to these symbolic scores is using the \emph{**harm} \cite{harm} syntax. which can be included as a spine in the humdrum file.
-
 \subsubsection{About the Humdrum grammar and **harm syntax}
 The humdrum grammar is a general-purpose grammar that allows to organize information in columns, called spines. However, it is probably almost exclusively used to encode musical information, using the \emph{**kern} syntax. This syntax allows to write parts of a musical score, defining tempo, key signature, time signature, pitch and rhythm information. It is useful to encode this information in the **kern syntax as there are tools that extract and process this musical information, feeding the humdrum files into a computational musicology framework.
 
 The **harm syntax is a dedicated syntax for annotating roman numerals, which is compatible with the Humdrum grammar. Among other things, it allows to represent different diatonic chords, as well as common chromatic substitutions in the common practice, e.g., augmented sixth and neapolitan chords. It also allows to set a current key to relate all the numeral degrees to, define a region as ambiguous in key, add intervals if a chord cannot be expressed with the roman numerals or chromatic substitution tokens.
+
+\subsection{Manual annotations}
+Once the symbolic scores are complete, the next step in the creation of the dataset involves a manual harmonic analysis of each of the pieces. As presented during \autoref{chap:introduction}, the expected output of the system is an annotated version in the form of a roman numeral analysis. Therefore, the manual analyses performed over the 24 pieces of the dataset have been done using these roman numeral analysis labels as well.
+
+The best way to digitally append a roman numeral analysis to these symbolic scores is using the \emph{**harm} \cite{harm} syntax. which can be included as a spine in the humdrum file.
 
 \autoref{table:manual-annotation} shows an example of appending this manual roman numeral analysis to the same excerpt of music presented since the beginning of this document, i.e., \emph{Joseph Haydn's Op.20 No.3 - II. Menuetto: Allegretto, mm.1-6}.
 
