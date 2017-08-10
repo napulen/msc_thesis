@@ -90,45 +90,43 @@ The best way to digitally append a roman numeral analysis to these symbolic scor
  \subsection{About the **harm syntax}
  The **harm syntax is a dedicated syntax for annotating roman numerals, which is compatible with the Humdrum grammar. Among other things, it allows to represent different diatonic chords, as well as common chromatic substitutions in the common practice, e.g., augmented sixth and neapolitan chords. It also allows to set a current key to relate all the numeral degrees to, define a region as ambiguous in key, add intervals if a chord cannot be expressed with the roman numerals or chromatic substitution tokens.
 
-
+ \begin{table}[tbp]
+ \centering
+ \begin{tabular}{|llll|ll|}
+ \hline
+ \multicolumn{4}{|l|}{Original humdrum score} & \multicolumn{2}{l|}{Appended analysis} \\ \hline
+ **kern & **kern & **kern & **kern & **harm & **commentary \\
+ *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} \\
+ *g: & *g: & *g: & *g: & *g: & *g: \\
+ *clefF4 & *clefC3 & *clefG2 & *clefG2 & * & * \\
+ *M3/4 & *M3/4 & *M3/4 & *M3/4 & *M3/4 & *M3/4 \\
+ 2r & 2r & 2r & 2r & . & . \\
+ 4r & 4r & 4r & 4d & . & . \\
+ 1 & 1 & 1 & 1 & 1 & 1 \\
+ 4G & 2.r & 4B- & 4b- & i & . \\
+ 4A & . & 4c & 4a & iio & \begin{tabular}[c]{@{}l@{}}Not really diminished, \\ missing the fifth\end{tabular} \\
+ 4B- & . & 4d & 4g & ib & . \\
+ 2 & 2 & 2 & 2 & 2 & 2 \\
+ 2c & 2r & 2e- & 4g & iv & . \\
+ . & . & . & 4g & . & . \\
+ 4B- & 4d & 4d & 4g & ib & . \\
+ 3 & 3 & 3 & 3 & 3 & 3 \\
+ {[}2.A & {[}2.c & {[}2.f\# & 4cc & viiob & . \\
+ . & . & . & 4cc & . & . \\
+ . & . & . & 4dd & V7c & . \\
+ 4 & 4 & 4 & 4 & 4 & 4 \\
+ 2.A\_ & 2.c\_ & 2.f\#\_ & 2ee- & viioD7b & . \\
+ . & . & . & 4ee- & . & . \\
+ 5 & 5 & 5 & 5 & 5 & 5 \\
+ 4A{]} & 4c{]} & 4f\#{]} & 4dd & V7c & . \\
+ 2r & 2r & 2r & 4r & . & . \\
+ . & . & . & 4d & . & . \\ \hline
+ \end{tabular}
+ \caption{Example of appending a manual annotation of roman numerals to a humdrum score}
+ \label{table:manual-annotation}
+ \end{table}
 
 \autoref{table:manual-annotation} shows an example of appending this manual roman numeral analysis to the same excerpt of music presented since the beginning of this document, i.e., \emph{Joseph Haydn's Op.20 No.3 - II. Menuetto: Allegretto, mm.1-6}.
-
-\begin{table}[tbp]
-\centering
-\begin{tabular}{|llll|ll|}
-\hline
-\multicolumn{4}{|l|}{Original humdrum score} & \multicolumn{2}{l|}{Appended analysis} \\ \hline
-**kern & **kern & **kern & **kern & **harm & **commentary \\
-*k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} & *k{[}b-e-{]} \\
-*g: & *g: & *g: & *g: & *g: & *g: \\
-*clefF4 & *clefC3 & *clefG2 & *clefG2 & * & * \\
-*M3/4 & *M3/4 & *M3/4 & *M3/4 & *M3/4 & *M3/4 \\
-2r & 2r & 2r & 2r & . & . \\
-4r & 4r & 4r & 4d & . & . \\
-1 & 1 & 1 & 1 & 1 & 1 \\
-4G & 2.r & 4B- & 4b- & i & . \\
-4A & . & 4c & 4a & iio & \begin{tabular}[c]{@{}l@{}}Not really diminished, \\ missing the fifth\end{tabular} \\
-4B- & . & 4d & 4g & ib & . \\
-2 & 2 & 2 & 2 & 2 & 2 \\
-2c & 2r & 2e- & 4g & iv & . \\
-. & . & . & 4g & . & . \\
-4B- & 4d & 4d & 4g & ib & . \\
-3 & 3 & 3 & 3 & 3 & 3 \\
-{[}2.A & {[}2.c & {[}2.f\# & 4cc & viiob & . \\
-. & . & . & 4cc & . & . \\
-. & . & . & 4dd & V7c & . \\
-4 & 4 & 4 & 4 & 4 & 4 \\
-2.A\_ & 2.c\_ & 2.f\#\_ & 2ee- & viioD7b & . \\
-. & . & . & 4ee- & . & . \\
-5 & 5 & 5 & 5 & 5 & 5 \\
-4A{]} & 4c{]} & 4f\#{]} & 4dd & V7c & . \\
-2r & 2r & 2r & 4r & . & . \\
-. & . & . & 4d & . & . \\ \hline
-\end{tabular}
-\caption{Example of appending a manual annotation of roman numerals to a humdrum score}
-\label{table:manual-annotation}
-\end{table}
 
 This example was taken from the dataset repository and thus this is how the annotations look in the dataset. The first appended column (spine, in the language of the humdrum grammar) represents the roman numeral labels, while the second is left for clarifications, exaplanations and any comment that is worth mentioning during certain point of the analysis. The only meaningful difference against the annotations in the dataset is that these have been preppended to the humdrum file instead of appended, as this allowed for easier parsing of the files.
 
