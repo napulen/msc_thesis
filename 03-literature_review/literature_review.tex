@@ -16,34 +16,13 @@ Therefore, in practice, researchers have systematically split their efforts to t
 
  As the target music of this work belongs to the early Classical period in western art music, I will be dealing with the approaches concerning this kind of music, with special attention to those approaches that attempt to solve the problem entirely, without assuming an input of chord labels, but a full musical score.
 
-% \section{Harmonic analysis in music theory}
-% Harmonic analysis could be seen from different perspectives, the first one I would like to address is how it was conceived and modeled by music theorists. Starting with the french composer Jean-Philippe Rameau (1683-1764), until the theory from the german theorist Hugo Riemann (1849-1919) in the late nineteenth century.
-%   \subsection{Fundamental bass}
-%   The original idea by Rameau was based on the movement of the bass note, the so called \emph{Fundamental Bass}, which constructed rules and principles of how the movement of a bass note determined also the movement of the harmony. Rameau's theory limited the dictionary of chords to triads and some special cases of seventh chords, and considered chord inversions for the first time, from which the core concept of harmonic root arises and suggests that the bass note could be serving a harmonic root located in the superior voices. This theory is pioneer in separating the melodic movement and coincidence in time from counterpoint \cite{beach1974origins}, and looking at the music from a vertical perspective, a vision that spread in the following periods of western art music.
-%   \subsection{Root succession tables}
-%   These set of theories, denomined by Tymoczko as \emph{scale-degree} theories \cite{tymoczko2001root}, assign a number to each of the degrees in a scale, which represents its triad, and then trying to infer the most common succession of that particular scale degree to another. This theories have been used commonly in Harmony text books, and in principle, the scale-degree transitions have not been obtained scientifically. However, due to the probabilistic nature of these theories, there have been recent efforts in validating their statements and accuracy using computational resources, such as first-order Markov models.
-%   \subsection{Functional harmony}
-%   In 1893, Hugo Riemann presented his \emph{Vereinfachte Harmonielehre}, which placed together ideas and theories from himself and earlier theorists, and gave birth to what is called \emph{Functional Harmony}. The most notable, and allegedly controversial, characterization that comes from the functions theory, is the idea of categorization of chords. Functional harmony considers that chords belong to one of three tonal functions:
-%   \begin{itemize}
-%     \item Tonic
-%     \item Subdominant
-%     \item Dominant
-%   \end{itemize}
-%   These functions contain all individual chords, but are essentially represented by the primary triads: I, IV and V.
-%   Due to this categorization of chords, functional harmony contains more information about tonal contexts and semantics, and therefore, as an analysis output becomes more interesting than fundamental bass or root succession theories.
+ Once established that this work is dealing with music from the Classical period and therefore its interest is in the approaches that attempt to provide an automatic harmonic analysis of such subset of tonal music, I will start to describe some of the remarkable efforts done, putting special emphasis to their contributions, inputs, outputs and flaws.
+
 \section{Automatic harmonic analysis}
-Most researchers agree that the pioneer work in this problem was the approach from Winograd in 1968 \cite{winograd1968linguistics}. Since then, researchers have developed this idea in very different ways.
 
-  \subsection{Target musical style}
-  Tonal music could comprehend a wide range of music as early baroque's Claudio Monteverdi to 20th century jazz fusion's Allan Holdwsworth. In that sense, an automatic harmonic analysis approach should be able to reach and point out interesting things about all these kinds of music. In practice, however, it is difficult that one approach could serve all sorts of tonal music and at the same time deal with the details, common practices and corner cases from these different music styles and periods. Researchers have systematically split their efforts to target specific kinds of music, and even sometimes, specific composers.
-  Among the approaches that cover different kinds of music, there is the General Chord Type (GCT) representation from Emilios Cambouropoulos \cite{cambouropoulos2014idiom}, which is intended to be used in the universal classification of chord verticals according to the idiom that is trying to model. This model is not restricted to tonal music, having the possibility of working in atonal music as well, however, as I stated before, such a flexible model does not deal with the complex and specific scenarios of tonal music, in this case, simply because it is not designed to do it.
-  The natural separation that has emerged among researches is to either tackle harmonic analysis targetting classical music or jazz music. As the interest of my work is classical music, I will only briefly describe some of the pillar works in the context of jazz harmonic analysis.
-
-  \subsection{Harmonic analysis chronology}
-  Once established that this work is dealing with music from the Classical period and therefore its interest is in the approaches that attempt to provide an automatic harmonic analysis of such subset of tonal music, I will start to describe some of the remarkable efforts done, putting special emphasis to their contributions, inputs, outputs and flaws.
-    \subsubsection{The pioneer work by Terry Winograd}
+    \subsection{The pioneer work by Terry Winograd}
     As it was stated before, researchers in the field mostly mention the approach from Terry Winograd, in 1968, as the pioneer work in the field. This work is not only important because it is the first and pioneering work in computing a functional harmonic analysis, but also because it linked the computational techniques used in natural language processing to music. The model from Winograd was evaluated over music from Johann Sebastian Bach, and pretends to output a functional harmonic analysis of such pieces of music. To provide an output, it requires a preliminary hand-made conversion of the original score and turn it into a sequence of four-part perfect chords. This allowed him to process a score using his implementation in the LISP programming language, but it also means that during this pre-processing stage the non-harmonic tones are eliminated before solving the problem. In his 1997 harmonic analysis algorithm \cite{temperley1997algorithm}, David Temperley provided insight about the flaws of Winograd's model, among them he mentions the issues concercing melodic seggregation and arpeggiations.
-    \subsubsection{Expert system from Maxwell}
+    \subsection{Expert system from Maxwell}
     A direct successor of Winograd's approach, the model from John Maxwell, which was part of his PhD dissertation in 1984, and successively published in 1992 \cite{maxwell1992expert}, is probably the best example of the rule-based approaches towards harmonic analysis. Same as Winograd, Maxwell's target was to output a functional harmonic analysis from a music score. The model from Maxwell has fifty five rules that pretend to reduce the vertical sonorities into a chord sequence, and then deciding for key changes. Some of the rules are intuitive and basic, e.g., \emph{"Perfect and imperfect consonant intervals constitute a consonant interval. Every other is a dissonant interval."}, while others appear cryptic and difficult to understand, e.g., \emph{"If the goal chord falls on a strong beat and it is a major triad or major-minor seventh, and the root movement from the pre-cadence is an ascending or descending perfect fifth or major second or a descending minor second, and when the root motion is a descending fifth, the pre-cadence is not a potential dominant, and when the root motion is an ascending fifth the pre-cadence is triadic, then the pseudo-cadence is a half cadence, and its strength increases by 10."}.
     The later rule also reveals a problem that was pointed out by future researchers, the use of arbitrary, fixed values while determining the strength of a cadence. Even so, the results of Maxwell's approach get really close to the outcome expected by a music theorist analyzing a music score and determining its functional harmony. This work was tested over three different movements of Johann Sebastian Bach's Six French Suites: The sarabande from Suite No.1, the menuet from Suite No.2 and the gavotte from Suite No.5. The pieces selected comprehend different problems and levels of complexity to be addressed: Four-part harmony with several non-harmonic tones, 2-voice continuous contrapuntual movement, and a varying contrapuntual texture, respectively. David Temperley put the limitations of Winograd and Maxwell's approaches pretty close together, summarizing them in the following:
 		\begin{itemize}
@@ -52,7 +31,7 @@ Most researchers agree that the pioneer work in this problem was the approach fr
 			\item Ornamental notes. Maxwell proposes specific rules to deal with these notes, but according to Temperley, neither Maxwell's or Winograd's are good enough to correctly detect ornamental notes.
     \end{itemize}
     Maxwell's approach, in general, represents the powerful and sophisticated machinery of rule-based approaches, as well as their complexity.
-    \subsubsection{Temperley and the Melisma Music Analyzer}
+    \subsection{Temperley and the Melisma Music Analyzer}
     Probably the most relevant approach in automatic harmonic analysis for this work, is the approach from David Temperley described in 1997 \cite{temperley1997algorithm}, as it was extended afterwards by his work in key estimation algorithms and which culminated in the implementation of the Melisma Music Analyzer, in conjunction with Daniel Sleator.
     Inspired by the cognitive experiments by Carol Krumhansl \cite{krumhansl2001cognitive}, the aim of Temperley is to produce an algorithm that models the human process of harmonic analysis done by a trained expert, and to take it as indicative of the analysis produced subconsciously by listeners in general.
 
@@ -62,7 +41,7 @@ Most researchers agree that the pioneer work in this problem was the approach fr
 
     It is difficult to follow the chronology of this approach, as the implementation of this model comes mainly in the form of the Melisma Music Analyzer, which was released in 2001, and included the key estimation algorithm and a combined mode that eventually performed the complete functional harmonic analysis. The latest mode being the core implementation of what will be used to compute automatic harmonic analysis during this work.
 
-    \subsubsection{Probabilistic and statistical approaches}
+    \subsection{Probabilistic and statistical approaches}
     Temperley himself, after the release of the Melisma Music Analyzer, moved into the direction of probabilistic models. In his case, using a Bayesian approach that aims to provide a unified modeling of harmonic analysis, meter induction and melodic seggregation, challenging the individualization of these problems without considering the connections among them \cite{temperley2009unified}.
 
     However, previous to this work, an important probabilistic approach that emerged to solve the problem of functional harmonic analysis was that of Christopher Raphael \cite{raphael2003harmonic}.
@@ -70,7 +49,7 @@ Most researchers agree that the pioneer work in this problem was the approach fr
 
     Another quite important effort in the statistical domain includes the work from Martin Rohrmeier \cite{rohrmeier2008statistical}, who uses a heuristic method of segmentation. Analyzes distributions of single pitch-class-sets, chord classes and pitch-class-sets transitions. One of the goals of Rohrmeier was the research of \emph{syntacticality} in harmony. The final goal is to produce descriptive analyses of harmonic structure based on an empirical approach. The choice of the corpus is, similarly to others, music from Joahann Sebastian Bach. In his case, chorales, because they constitute a large and coherent set of pieces regarding style and composition technique. Rohrmeier claims that this work is pioneer in the statistical analysis of a corpus for the purpose of finding features of tonal harmony. According to the results of Rohrmeier, the most frequent occurrences of pitch-class-sets in this music are those of tonic, dominant and subdominant chords. This would be expected and helps to reinforce those scale-degree theories that describe harmonic movement with transition tables of scale degrees. The results from this research, apart from being interesting in confirming music-theory beliefs regarding common chords and transitions in tonal music, could also be replicated in a different corpus to target its particular common chords and transitions.
 
-    \subsubsection{Grammar-based}
+    \subsection{Grammar-based}
     Three years after his statistical work in Bach Chorales, Martin Rohrmeier brought back the use of grammars to study the underlying structure of musical harmony \cite{rohrmeier2011towards}, which inspired future works by other researchers in the field, specially towards analyzing jazz music. In this work, Rohrmeier claims that the structure of harmonic progressions exceeds the simplicity of a markovian transition table, and he proposes a set of phrase-structure grammar rules. For this purpose, the hierarchical analysis from the music-theory approach done by \cite{kostka1995tonal} is presented, with the belief that it can be brought to a closer formalization. Rohrmeier presents a tree representation of a chord sequence, using two principles:
     \begin{itemize}
 			\item Chords have dependencies and the existence of one sometimes requires the existence of another
@@ -81,6 +60,24 @@ Most researchers agree that the pioneer work in this problem was the approach fr
     This work was eventually retaken and implemented by Bas de Haas \cite{de2013automatic} using chord labels as input for the system.
 
     As discussed previously, different methods of performing harmonic analysis oftenly have different outputs in mind, considering this, I will mention that even if the hierarchical representations of harmony appear interesting and promising, the aim for this work is to provide music scores as input and produce an automatic harmonic analysis as output. In this sense, the most relevant approaches can be reduced simply to those approaches who pretend to output exactly that.
+
+  During \autoref{chap:introduction}, I presented three different label sets as the harmonic analysis of a fragment of music, this appears in \autoref{fig:chord-labels}. It is important now to mention the selected labeling system, as this influences the approach to be chosen for this work.
+
+  \section{Labeling harmonic structures}
+  Harmonic analysis could be seen from different perspectives, the first one I would like to address is how it was conceived and modeled by music theorists. Starting with the french composer Jean-Philippe Rameau (1683-1764), until the theory from the german theorist Hugo Riemann (1849-1919) in the late nineteenth century.
+    \subsection{Fundamental bass}
+    The original idea by Rameau was based on the movement of the bass note, the so called \emph{Fundamental Bass}, which constructed rules and principles of how the movement of a bass note determined also the movement of the harmony. Rameau's theory limited the dictionary of chords to triads and some special cases of seventh chords, and considered chord inversions for the first time, from which the core concept of harmonic root arises and suggests that the bass note could be serving a harmonic root located in the superior voices. This theory is pioneer in separating the melodic movement and coincidence in time from counterpoint \cite{beach1974origins}, and looking at the music from a vertical perspective, a vision that spread in the following periods of western art music.
+    \subsection{Root succession tables}
+    These set of theories, denomined by Tymoczko as \emph{scale-degree} theories \cite{tymoczko2001root}, assign a number to each of the degrees in a scale, which represents its triad, and then trying to infer the most common succession of that particular scale degree to another. This theories have been used commonly in Harmony text books, and in principle, the scale-degree transitions have not been obtained scientifically. However, due to the probabilistic nature of these theories, there have been recent efforts in validating their statements and accuracy using computational resources, such as first-order Markov models.
+    \subsection{Functional harmony}
+    In 1893, Hugo Riemann presented his \emph{Vereinfachte Harmonielehre}, which placed together ideas and theories from himself and earlier theorists, and gave birth to what is called \emph{Functional Harmony}. The most notable, and allegedly controversial, characterization that comes from the functions theory, is the idea of categorization of chords. Functional harmony considers that chords belong to one of three tonal functions:
+    \begin{itemize}
+      \item Tonic
+      \item Subdominant
+      \item Dominant
+    \end{itemize}
+    These functions contain all individual chords, but are essentially represented by the primary triads: I, IV and V.
+    Due to this categorization of chords, functional harmony contains more information about tonal contexts and semantics, and therefore, as an analysis output becomes more interesting than fundamental bass or root succession theories.
 
   \subsection{Functional harmonic analysis}
   From the previously mentioned efforts of harmonic analysis, those that explicitly pretend to output a functional harmonic analysis from a music score, are the following:
@@ -97,8 +94,6 @@ Most researchers agree that the pioneer work in this problem was the approach fr
       Illescas & 2008 & Java & Partial
     \end{tabular}
   \end{table}
-  From the approaches shown in Table 1, results evident that the decision over the approach used as the baseline for this work performing an automatic harmonic analysis is that of David Temperley, which is related to the Melisma Music Analyzer. Simply put, because it is the most mature approach in terms of reproducibility and applicability to large volumes of music, like the string quartet dataset used in this work, which will be described later.
-  \textbf{Note: 27th of June of 2017}
-  I am missing a further explanation of the datasets currently available and the decision to use Haydn's music and the Op.20 String Quartets. This will be added later.
+  From the approaches shown in Table 1, results evident that the decision over the approach used as the baseline for this work performing an automatic harmonic analysis is that of David Temperley, which is related to the Melisma Music Analyzer. Simply put, because it is the most mature approach in terms of reproducibility and applicability to large volumes of music, like the string quartet dataset used in this work.
 
 \newpage
