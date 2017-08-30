@@ -1,6 +1,17 @@
 \chapter{Literature review}
 \label{chap:literature-review}
+During \ref{chap:introduction}, I defined what a system for automatic harmonic analysis consists of, i.e., \emph{A piece of software that given a fragment of music as input, will output the same piece of music, with roman numeral labels appended to it}. At least for this particular work. Pending is, to explain why the inclination for roman numerals as the output labels for the analysis. In the first section of this chapter, I will make a small review of three important theories in the domain of music theory that help to justify the election of roman numerals as the preferred output for harmonic analysis.
+
+I also established during \ref{chap:dataset} that the musical scores used for this work are encoded using the \emph{Humdrum} \cite{humdrum} grammar and the roman numerals labeled using the \emph{**harm} \cite{harm} syntax. In the second section of this chapter, I will go through a chronological list of attempts in conceiving a system of automatic harmonic analysis, however, even if others have not been discarded during the research, I am favoring those attempts that could work with a musical score encoded in the humdrum grammar as input, and which can output a similar encoding with an appended **harm spine for the roman numeral labels.
+
+Among the most important factors that lead to separate the \emph{favorite} attempts from the rest, I could list two: The first one, being the capability of the system to deal with full scores as input, instead of a list of chord labels. The second, being the capability of the system to exploit, infer or reconstruct the pitch-spelling information from the original score in the output of the analyzed score.
+
+\section{Music Theory}
+
+\section{Automatic Harmonic Analysis}
 Most researchers agree that the pioneer work addressing the problem of harmonic analysis is the approach made by Terry Winograd in 1968 \cite{winograd1968linguistics}. Since then, researchers have developed over the idea of harmonic analysis in very different ways.
+
+\section{Target music}
 
 One possible reason for this is how much the harmony of different kinds of music diverges. Even restricting ourselves to tonal music, we would still comprehend a range of music as wide as late 16th century's Claudio Monteverdi to 20th century fusion jazz' Allan Holdwsworth. It is very difficult to imagine an automatic harmonic analysis approach that could serve all sorts of music and at the same time deal with the details, common practices and corner cases from these different music styles and periods.
 
