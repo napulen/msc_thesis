@@ -2,11 +2,26 @@
 \label{chap:literature-review}
 During \autoref{chap:introduction}, I defined what a system for automatic harmonic analysis consists of, i.e., \emph{A piece of software that given a fragment of music as input, will output the same piece of music, with roman numeral labels appended to it}. At least for this particular work. Pending is, to explain why the inclination for roman numerals as the output labels for the analysis. In the first section of this chapter, I will make a small review of three important theories in the domain of music theory that help to justify the election of roman numerals as the preferred output for harmonic analysis.
 
-I also established during \autoref{chap:dataset} that the musical scores used for this work are encoded using the \emph{Humdrum} \cite{humdrum} grammar and the roman numerals labeled using the \emph{**harm} \cite{harm} syntax. In the second section of this chapter, I will go through a chronological list of attempts in conceiving a system of automatic harmonic analysis, however, even if others have not been discarded during the research, I am favoring those attempts that could work with a musical score encoded in the humdrum grammar as input, and which can output a similar encoding with an appended **harm spine for the roman numeral labels.
+I also established during \autoref{chap:dataset} that the musical scores used for this work are encoded using the \emph{Humdrum} \cite{humdrum} grammar and the roman numerals labeled using the \emph{**harm} \cite{harm} syntax. In the second section of this chapter, I will go through a chronological list of attempts in conceiving a system of automatic harmonic analysis, however, favoring those attempts that could work with a musical score encoded in the humdrum grammar as input, and which can output a similar encoding with an appended **harm spine for the roman numeral labels.
 
 Among the most important factors that lead to separate the \emph{favorite} attempts from the rest, I could list two: The first one, being the capability of the system to deal with full scores as input, instead of a list of chord labels. The second, being the capability of the system to exploit, infer or reconstruct the pitch-spelling information from the original score in the output of the analyzed score.
 
 \section{Music Theory}
+Harmonic analysis could be seen from different perspectives, the first one I would like to address is how it was conceived and modeled by music theorists. Starting with the french composer Jean-Philippe Rameau (1683-1764), until the theory from the german theorist Hugo Riemann (1849-1919) in the late nineteenth century.
+  \subsection{Fundamental bass}
+  The original idea by Rameau was based on the movement of the bass note, the so called \emph{Fundamental Bass}, which constructed rules and principles of how the movement of a bass note determined also the movement of the harmony. Rameau's theory limited the dictionary of chords to triads and some special cases of seventh chords, and considered chord inversions for the first time, from which the core concept of harmonic root arises and suggests that the bass note could be serving a harmonic root located in the superior voices. This theory is pioneer in separating the melodic movement and coincidence in time from counterpoint \cite{beach1974origins}, and looking at the music from a vertical perspective, a vision that spread in the following periods of western art music.
+  \subsection{Root succession tables}
+  These set of theories, denomined by Tymoczko as \emph{scale-degree} theories \cite{tymoczko2001root}, assign a number to each of the degrees in a scale, which represents its triad, and then trying to infer the most common succession of that particular scale degree to another. This theories have been used commonly in Harmony text books, and in principle, the scale-degree transitions have not been obtained scientifically. However, due to the probabilistic nature of these theories, there have been recent efforts in validating their statements and accuracy using computational resources, such as first-order Markov models.
+  \subsection{Functional harmony}
+  In 1893, Hugo Riemann presented his \emph{Vereinfachte Harmonielehre}, which placed together ideas and theories from himself and earlier theorists, and gave birth to what is called \emph{Functional Harmony}. The most notable, and allegedly controversial, characterization that comes from the functions theory, is the idea of categorization of chords. Functional harmony considers that chords belong to one of three tonal functions:
+  \begin{itemize}
+    \item Tonic
+    \item Subdominant
+    \item Dominant
+  \end{itemize}
+  These functions contain all individual chords, but are essentially represented by the primary triads: I, IV and V.
+  Due to this categorization of chords, functional harmony contains more information about tonal contexts and semantics, and therefore, as an analysis output becomes more interesting than fundamental bass or root succession theories.
+
 
 \section{Automatic Harmonic Analysis}
 Most researchers agree that the pioneer work addressing the problem of harmonic analysis is the approach made by Terry Winograd in 1968 \cite{winograd1968linguistics}. Since then, researchers have developed over the idea of harmonic analysis in very different ways.
@@ -87,22 +102,6 @@ Therefore, in practice, researchers have systematically split their efforts to t
     As discussed previously, different methods of performing harmonic analysis often have different outputs in mind, considering this, I will mention that even if the hierarchical representations of harmony appear interesting and promising, the aim for this work is to provide music scores as input and produce an automatic harmonic analysis as output. In this sense, the most relevant approaches can be reduced simply to those approaches who pretend to output exactly that.
 
   During \autoref{chap:introduction}, I presented three different label sets as the harmonic analysis of a fragment of music, this appears in \autoref{fig:harmonic-labels}. It is important now to mention the selected labeling system, as this influences the approach to be chosen for this work.
-
-  \section{Labeling harmonic structures}
-  Harmonic analysis could be seen from different perspectives, the first one I would like to address is how it was conceived and modeled by music theorists. Starting with the french composer Jean-Philippe Rameau (1683-1764), until the theory from the german theorist Hugo Riemann (1849-1919) in the late nineteenth century.
-    \subsection{Fundamental bass}
-    The original idea by Rameau was based on the movement of the bass note, the so called \emph{Fundamental Bass}, which constructed rules and principles of how the movement of a bass note determined also the movement of the harmony. Rameau's theory limited the dictionary of chords to triads and some special cases of seventh chords, and considered chord inversions for the first time, from which the core concept of harmonic root arises and suggests that the bass note could be serving a harmonic root located in the superior voices. This theory is pioneer in separating the melodic movement and coincidence in time from counterpoint \cite{beach1974origins}, and looking at the music from a vertical perspective, a vision that spread in the following periods of western art music.
-    \subsection{Root succession tables}
-    These set of theories, denomined by Tymoczko as \emph{scale-degree} theories \cite{tymoczko2001root}, assign a number to each of the degrees in a scale, which represents its triad, and then trying to infer the most common succession of that particular scale degree to another. This theories have been used commonly in Harmony text books, and in principle, the scale-degree transitions have not been obtained scientifically. However, due to the probabilistic nature of these theories, there have been recent efforts in validating their statements and accuracy using computational resources, such as first-order Markov models.
-    \subsection{Functional harmony}
-    In 1893, Hugo Riemann presented his \emph{Vereinfachte Harmonielehre}, which placed together ideas and theories from himself and earlier theorists, and gave birth to what is called \emph{Functional Harmony}. The most notable, and allegedly controversial, characterization that comes from the functions theory, is the idea of categorization of chords. Functional harmony considers that chords belong to one of three tonal functions:
-    \begin{itemize}
-      \item Tonic
-      \item Subdominant
-      \item Dominant
-    \end{itemize}
-    These functions contain all individual chords, but are essentially represented by the primary triads: I, IV and V.
-    Due to this categorization of chords, functional harmony contains more information about tonal contexts and semantics, and therefore, as an analysis output becomes more interesting than fundamental bass or root succession theories.
 
   \subsection{Functional harmonic analysis}
   From the previously mentioned efforts of harmonic analysis, those that explicitly pretend to output a functional harmonic analysis from a music score, are the following:
