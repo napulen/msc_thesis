@@ -19,7 +19,14 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
 \section{The Melisma Music Analyzer}
   The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a \emph{NoteFile}, which is similar to a plain-text representation of midi files. The Melisma Music Analyzer consists of several standalone programs, therefore, the output depends on the program that is being run over the Notefile input. However, generally speaking, they all output a plain-text analysis of some sort.
 
-  In order to obtain a harmonic analysis, a NoteFile needs to go through 3 stand-alone programs
+  In order to obtain a harmonic analysis, a NoteFile needs to go through 3 stand-alone programs, one after another: Meter, Harmony and Key.
+
+  \begin{figure}[ht]
+    \centering
+      \includegraphics[width=1.0\textwidth]{04-methodology/figures/2}
+    \caption{Melisma Music Analyzer, from a Notefile to a plain-text analysis}
+    \label{fig:software_stack2}
+  \end{figure}
 
   \subsection{Meter}
     This program extracts metrical information about the musical piece, using the theories of the Generative Theory of Tonal Music as a basis.
@@ -30,13 +37,6 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
     This program takes as input the notefile with beat and harmonic-root information (the ouput from the harmony program). Something to remark about this program is that it might work without the information from the harmony program, estimating only the key, without using any harmonic root information. This could be seen in the following way, if David Temperley divides the problem of harmonic analysis into two subproblems: Root estimation and Key estimation, the first mode of this program pretends to solve the second problem, while in the second mode, adding the output from the "harmony" program as input, pretends to solve both subtasks and output a full harmonic analysis. The difference between these different modes relies on the user setting a certain value in the corresponding parameter file.
 
     \autoref{fig:software_stack2} shows the flow from an input Notefile to the plain-text analysis that is being output by the key estimation program of the Melisma Music Analyzer.
-
-    \begin{figure}[ht]
-      \centering
-        \includegraphics[width=1.0\textwidth]{04-methodology/figures/2}
-      \caption{Melisma Music Analyzer, from a Notefile to a plain-text analysis}
-      \label{fig:software_stack2}
-    \end{figure}
 
   \subsection{Parameter files}
     Every program from the Melisma Music Analyzer accepts a parameter file for configuring different options, such as verbosity or roman numeral analysis.
