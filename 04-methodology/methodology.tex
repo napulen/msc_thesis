@@ -5,18 +5,18 @@
 
 As I described during \autoref{chap:literature-review}, the original model from David Temperley divided a system of automatic harmonic analysis in two subsystems: One that performs root detection and another one that performs key detection. Thanks to the work that has been already done by David Temperley, Daniel Sleator and Craig Sapp, the idea of using an implemented model of this automatic harmonic analysis system over the dataset described in this work is already feasible by putting together different programs and scripts.
 
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.5\textwidth]{04-methodology/figures/1}
+  \caption{Harmonic analysis as divided by David Temperley}
+  \label{fig:software_stack1}
+\end{figure}
+
 During this chapter I will go through the process of listing and joining together all the programs that are necessary to perform the automatic harmonic analysis of a humdrum musical score. I will start from the analysis programs of the Melisma Music Analyzer, which are the core of the analysis, to the scripts and programs of the Humdrum Extras software tools that allow for the use of real Humdrum music scores.
 
 \section{The Melisma Music Analyzer}
   The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a "NoteFile" which is similar to a plain-text representation of midi files.
   In order to achieve a full harmonic analysis, a NoteFile needs to go through 3 stand-alone programs
-
-  \begin{figure}[ht]
-    \centering
-      \includegraphics[width=0.5\textwidth]{04-methodology/figures/1}
-    \caption{Harmonic analysis as divided by David Temperley}
-    \label{fig:software_stack1}
-  \end{figure}
 
   \begin{figure}[ht]
     \centering
