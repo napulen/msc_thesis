@@ -60,13 +60,13 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
 
   Once the input file is able to be processed over the programs of the Melisma Music Analyzer, it will be possible to obtain the plain-text analysis of the \emph{Key} program. However, this analysis is difficult to parse as it is. Luckily, there is already a tool from the Humdrum Extras that provides help parsing this analysis, this tool is the \emph{key2humdrum} script, written in PERL.
 
-  \subsubsection{key2humdrum}
+  \subsection{key2humdrum}
     This program takes the output from the \emph{Key} program and outputs a pseudo-humdrum representation.
 
-  \subsubsection{Appending to a humdrum file}
+  \subsection{Appending to a humdrum file}
     The last step in getting the information back into a humdrum file is parsing the output of the key2humdrum program and appending this information to a humdrum spine. This process is not done by a standalone program, but rather a program that comprehends all the process described during this chapter. This program is called \emph{tsroot}.
 
-  \subsubsection{tsroot}
+  \subsection{tsroot}
     The tsroot programs performs all the steps described before, starting from calling the \emph{kern2melisma} to calling the Melisma programs and \emph{key2humdrum}. Additionally, this program also interprets the output of key2humdrum and produces a final humdrum score with the analysis information appended to it.
 
     \autoref{fig:software_stack3} could be seen as the process that happens each time the \emph{tsroot} program is run over a humdrum score. This is a truthful realization of the target system for automatic harmonic analysis explained in the first chapters of this document.
