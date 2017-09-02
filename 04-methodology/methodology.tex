@@ -39,12 +39,15 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
     \autoref{fig:software_stack2} shows the flow from an input Notefile to the plain-text analysis that is being output by the key estimation program of the Melisma Music Analyzer.
 
   \subsection{Problems with processing Notefile files}
-    The input format from the Melisma Music Analyzer, yet it resembles a MIDI file, it is not a midi file, it needs parsing.
+    The input format from the Melisma Music Analyzer, yet it resembles a MIDI file, it is not a midi file. It is also not a standard type of file that could be encountered typically in other software. More important, it is incompatible with the humdrum encoding of the dataset used for this work, so at this point, we are unable to run an analysis over these scores.
 
+    Hoever, there is one way around this problem. Using one of the programs found in the \emph{Humdrum extras} collection.
 
-    Humdrum extras provides a parser to convert a humdrum file into the notefile format used by Melisma, this program is called kern2melisma, and it is the first step in the workflow of a functional harmonic analysis from a humdrum score.
 \section{Humdrum extras}
-  The humdrum extras are a set of tools developed in C++ by Craig Sapp to process humdrum files (or to convert other formats into humdrum). For this work, we are particularly interested in a few of these utilities that help to process a humdrum file, pass it to the melisma music analyzer, and then bring the output back to humdrum.
+  The humdrum extras are a set of tools developed by Craig Sapp in the C++ programming language. These programs help to process humdrum files (or to convert other formats into humdrum). For this work, I am particularly interested in a few of these utilities that help to process a humdrum file, pass it to the melisma music analyzer, and then bring the output back to humdrum.
+
+  \subsection{kern2melisma}
+    There is one program that provides a parser to convert a humdrum file into the \emph{Notefile} format used by Melisma. this program is called kern2melisma, and it is the first step in the workflow of a functional harmonic analysis from a humdrum score.
 
   \subsubsection{Piping the output key to key2humdrum}
     Once the file is in Melisma's format, it can go through the melisma programs, as the output of these programs becomes the input for the next one, the files can be piped in unix environment, so it looks like this: kern2melisma | meter | harmony | key.
