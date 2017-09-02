@@ -7,9 +7,51 @@ From all the implications of this work, probably the evaluation is the one that 
 During this chapter, I will introduce the evaluation process that I propose for validating how similar a manually annotated harmonic analysis stands compared to another generated automatically using the methdods explained during \autoref{chap:methodology}.
 
 \section{After the automatic analysis}
+So far, I reviewed the implementation efforts that materialize a system of automatic harmonic analysis which takes a musical score encoded in humdrum and outputs a similar musical score with roman numeral labels in the **harm syntax appended to it.
 
-\section{Evaluation files}
-	They are valid Humdrum files with 2 pairs of **harm **root spines
+I also described a dataset of manual annotations in the **harm syntax.
+
+Now, I will describe the process of putting together both, the manually annotated score and the automatic analysis into a single file. I call this file, the evaluation file.
+
+\section{Evaluation file}
+	The evaluation file is a valid humdrum file with 4 spines.
+
+	The first pair of spines represents the roman numeral and harmonic root of the manual analysis, while the second represent the corresponding elements of the automatic analysis.
+
+	\begin{table}[]
+	\centering
+	\begin{tabular}{|ll|ll|}
+	\hline
+	\multicolumn{2}{|l|}{Manual analysis} & \multicolumn{2}{l|}{Automatic analysis} \\ \hline
+	**harm & **root & **harm & **root \\
+	. & . & . & . \\
+	. & . & . & . \\
+	. & . & . & . \\
+	. & . & . & . \\
+	. & . & . & . \\
+	. & . & . & . \\
+	1 & 1 & 1 & 1 \\
+	i & g & . & . \\
+	. & . & . & . \\
+	iio & a & iv & f \\
+	. & . & . & . \\
+	ib & g & . & . \\
+	. & . & . & . \\
+	2 & 2 & 2 & 2 \\
+	iv & c & ib & c \\
+	. & . & . & . \\
+	. & . & V7c & g \\
+	. & . & . & . \\
+	ib & g & . & . \\
+	. & . & . & . \\ \hline
+	\end{tabular}
+	\caption{Sample evaluation file from Op.20 No.3 - II., mm.1-2}
+	\label{table:evaluation_file}
+	\end{table}
+
+	\autoref{table:evaluation_file} summarizes this explanation with a fragment of an evaluation file.
+
+	\autroef
   \subsection{Generating}
   Take the manual and automatic, extract the harmonic root using harm2kern, append and filter
   \subsection{Rhythmic normalization}
