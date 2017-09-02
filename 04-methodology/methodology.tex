@@ -46,24 +46,31 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
 \section{Humdrum extras}
   The humdrum extras are a set of tools developed by Craig Sapp, mainly in the C++ programming language. These tools are useful for additional processing of musical scores encoded in humdrum. For this work, I am particularly interested in a few of these utilities that help to pass a humdrum file to the melisma music analyzer, and then bring the output from Melisma back to a humdrum representation.
 
+  \begin{figure}[ht]
+    \centering
+      \includegraphics[width=1.0\textwidth]{04-methodology/figures/3}
+    \caption{Automatic harmonic analysis of a humdrum musical score}
+    \label{fig:software_stack3}
+  \end{figure}
+
+  The first step is mitigating the problem around the Notefile format, for this, the \emph{kern2melisma} program from the Humdrum Extras collection shows quite useful.
+
   \subsection{kern2melisma}
-    There is one program that provides a parser to convert a humdrum file into the \emph{Notefile} format used by Melisma. this program is called kern2melisma, and it is the first step in the workflow of a functional harmonic analysis from a humdrum score.
+    This program provides a parser to convert a humdrum file into the \emph{Notefile} format used by Melisma. It is the first step in the workflow of a functional harmonic analysis from a humdrum score.
 
-  \subsubsection{Piping the output key to key2humdrum}
-    Once the file is in Melisma's format, it can go through the melisma programs, as the output of these programs becomes the input for the next one, the files can be piped in unix environment, so it looks like this: kern2melisma | meter | harmony | key.
-    At this point, we have the output of the key program from Melisma, this outputs needs additional processing to go back into a humdrum file. There are two programs from Craig Sapp of the MuseInfo tools that enable this process. In this work, I am requiring mainly the key2humdrum program, as this is the one taking the input from the key program, optionally parsing the roman numerals included with the output of the key program.
+  Once the input file is able to be processed over the programs of the Melisma Music Analyzer, it will be possible to obtain the plain-text analysis of the \emph{Key} program. However, this analysis is difficult to parse as it is. This brings the opportunity for the next tool from Humdrum Extras to provide help, this is the \emph{key2humdrum} program.
+
+  \subsubsection{key2humdrum}
+    This program takes the output from the \emph{Key} program and outputs a pseudo-humdrum representation.
+
   \subsubsection{Appending to a humdrum file}
-    The last step in getting the information back into a humdrum file is parsing the output of the key2melisma program and appending this information to a humdrum spine. This process is not done by a standalone program, but rather a program that comprehends all the process described before.
+    The last step in getting the information back into a humdrum file is parsing the output of the key2humdrum program and appending this information to a humdrum spine. This process is not done by a standalone program, but rather a program that comprehends all the process described before.
 
-    \begin{figure}[ht]
-      \centering
-        \includegraphics[width=1.0\textwidth]{04-methodology/figures/3}
-      \caption{Automatic harmonic analysis of a humdrum musical score}
-      \label{fig:software_stack3}
-    \end{figure}
-
-  \subsubsection{tsroot summarizes everything}
+  \subsubsection{tsroot}
     The tsroot programs performs all the steps described before, plus interpreting the output of key2humdrum and producing a final humdrum score with the analysis information appended to it.
+
+    \autoref{fig:software_stack3} could be seen as the process that happens each time the \emph{tsroot} program is run over a humdrum score. This is a truthful realization of the system for automatic harmonic analysis explained at the beginning of this work.
+    
 \section{KernScores}
   \subsection{Content}
   KernScores through its website allows to do an automatic analysis of the scores contained in their corpus.
