@@ -17,9 +17,9 @@ However, thanks to the implementation work that has been already done by David T
 I will start from the analysis programs of the Melisma Music Analyzer, which are the core of the analysis, to the scripts and programs of the Humdrum Extras software tools that allow for the use of real humdrum music scores.
 
 \section{The Melisma Music Analyzer}
-  The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a \emph{NoteFile}, which could be said to be a plain-text representation of midi files. The Melisma Music Analyzer consists of several standalone programs, therefore, the output depends on the program that is being run over the \emph{Notefile} input file. However, generally speaking, they all output a plain-text analysis of some sort.
+  The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a \emph{Notefile}, which could be said to be a plain-text representation of midi files. The Melisma Music Analyzer consists of several standalone programs, therefore, the output depends on the program that is being run over the \emph{Notefile} input file. However, generally speaking, they all output a plain-text analysis of some sort.
 
-  In order to obtain a harmonic analysis, a NoteFile needs to go through 3 stand-alone programs, one after another: Meter, Harmony and Key.
+  In order to obtain a harmonic analysis, a Notefile needs to go through 3 stand-alone programs, one after another: Meter, Harmony and Key.
 
   \begin{figure}[ht]
     \centering
@@ -39,9 +39,9 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
     \autoref{fig:software_stack2} shows the flow from an input Notefile to the plain-text analysis that is being output by the key estimation program of the Melisma Music Analyzer.
 
   \subsection{Problems with processing Notefile files}
-    The input format from the Melisma Music Analyzer, yet it resembles a MIDI file, it is not a midi file. It is also not a standard type of file that could be encountered typically in other software. More important, it is incompatible with the humdrum encoding of the dataset used for this work, so at this point, we are unable to run an analysis over these scores.
+    The input format from the Melisma Music Analyzer, yet it resembles a midi file, it is not a midi file. It is also not a standard type of file that could be encountered typically in other software. More important, it is incompatible with the humdrum encoding of the dataset used for this work, so at this point, we are unable to run an analysis over these scores.
 
-    Hoever, there is one way around this problem. Using one of the programs found in the \emph{Humdrum extras} collection.
+    However, there is one way around this problem. Using one of the programs found in the \emph{Humdrum extras} collection.
 
 \section{Humdrum extras}
   The humdrum extras are a set of tools developed by Craig Sapp, mainly in the C++ programming language. For this work, I am particularly interested in a few of these utilities that help to process a humdrum file, pass it to the melisma music analyzer, and then bring the output back to humdrum.
