@@ -17,7 +17,7 @@ However, thanks to the work that has been already done by David Temperley, Danie
 I will start from the analysis programs of the Melisma Music Analyzer, which are the core of the analysis, to the scripts and programs of the Humdrum Extras software tools that allow for the use of real humdrum music scores.
 
 \section{The Melisma Music Analyzer}
-  The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a \emph{NoteFile}, which is similar to a plain-text representation of midi files.
+  The Melisma Music Analyzer was implemented by Daniel Sleator over the work of David Temperley. It takes as input a \emph{NoteFile}, which is similar to a plain-text representation of midi files. The Melisma Music Analyzer consists of several standalone programs, therefore, the output depends on the program that is being run over the Notefile input, however, generally speaking, they all output a plain-text analysis of some sort.
 
   In order to obtain a harmonic analysis, a NoteFile needs to go through 3 stand-alone programs
 
@@ -56,7 +56,7 @@ I will start from the analysis programs of the Melisma Music Analyzer, which are
       \caption{Automatic harmonic analysis of a humdrum musical score}
       \label{fig:software_stack3}
     \end{figure}
-    
+
   \subsubsection{tsroot summarizes everything}
     The tsroot programs performs all the steps described before, plus interpreting the output of key2humdrum and producing a final humdrum score with the analysis information appended to it.
 \section{KernScores}
