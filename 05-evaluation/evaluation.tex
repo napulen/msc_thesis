@@ -56,9 +56,67 @@ Now, I will describe the process of putting together both, the manual and automa
 	Giving a more detailed look at the evaluation file, one can see that the time units seem to be normalized, as 6 data entries appear for each measure. There is, in fact, a normalization process of the time units.
 
   \subsection{Normalization of time units}
+
 	% Please add the following required packages to your document preamble:
 	% \usepackage{multirow}
 	\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
+	\multirow{2}{*}{Anacrusis} & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \hline
+	\multirow{3}{*}{First measure} & i & g & . & . \\ \cline{2-5}
+	 & iio & a & iv & f \\ \cline{2-5}
+	 & ib & g & . & . \\ \hline
+	\multirow{3}{*}{Second measure} & iv & c & ib & c \\ \cline{2-5}
+	 & . & . & V7c & g \\ \cline{2-5}
+	 & ib & g & . & . \\ \hline
+	\end{tabular}
+	\caption{Original time units}
+	\label{table:no_normalization}
+	\end{table}
+
+	If the evaluation file displayed before would keep the original time units of the labels, it would look like as shown in \autoref{table:no_normalization}.
+
+	One problem that arises with the way **harm spines are appended to the scores, is that these spines do not store any explicit information about time duration. The labels are properly interpreted in the full score because they are aligned to the note values from the instruments, which do have time duration information.
+
+	In order to avoid this and other problems related to duration, during the creation of the evaluation file, the time units of the score get normalized to the shortest note of the score.
+
+	\subsection{Finding the shortest note}
+		In order to find the shortest note, I am simply using the \emph{census} program, which is part of the \emph{Humdrum Toolkit} \cite{humdrum}.
+
+		\begin{verbatim}
+			HUMDRUM DATA
+
+			Number of data tokens:     1780
+			Number of null tokens:     515
+			Number of multiple-stops:  1
+			Number of data records:    445
+			Number of comments:        27
+			Number of interpretations: 7
+			Number of records:         479
+
+			KERN DATA
+
+			Number of note-heads:      785
+			Number of notes:           741
+			Longest note:              2.
+			Shortest note:             8
+			Highest note:              ddd
+			Lowest note:               DD
+			Number of rests:           125
+			Maximum number of voices:  5
+			Number of single barlines: 88
+			Number of double barlines: 1
+
+		\end{verbatim}
+
+	The fourth line from the \emph{KERN DATA} section, reveals the shortest note of the humdrum score. This note duration can be used to make a new timebase for the score.
+
+	% Please add the following required packages to your document preamble:
+	% \usepackage{multirow}
+	\begin{table}[tbp]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -82,33 +140,11 @@ Now, I will describe the process of putting together both, the manual and automa
 	 & ib & g & . & . \\ \cline{2-5}
 	 & . & . & . & . \\ \hline
 	\end{tabular}
-	\caption{With time normalization}
-	\label{my-label}
+	\caption{Adding time normalization to the evaluation file}
+	\label{table:normalization}
 	\end{table}
 
-
-	% Please add the following required packages to your document preamble:
-	% \usepackage{multirow}
-	\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-	\hline
-	Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
-	\multirow{2}{*}{Anacrusis} & . & . & . & . \\ \cline{2-5}
-	 & . & . & . & . \\ \hline
-	\multirow{3}{*}{First measure} & i & g & . & . \\ \cline{2-5}
-	 & iio & a & iv & f \\ \cline{2-5}
-	 & ib & g & . & . \\ \hline
-	\multirow{3}{*}{Second measure} & iv & c & ib & c \\ \cline{2-5}
-	 & . & . & V7c & g \\ \cline{2-5}
-	 & ib & g & . & . \\ \hline
-	\end{tabular}
-	\caption{My caption}
-	\label{my-label}
-	\end{table}
-
-	Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
-
+	\autoref{table:normalization} shows the normalized file to eight notes, which is the shortest note according to the \emph{census} program.
 
 	\subsection{Using Humdrum-extras}
   Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
