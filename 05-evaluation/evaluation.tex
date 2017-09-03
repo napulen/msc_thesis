@@ -1,6 +1,6 @@
 \chapter{Evaluation}
 \label{chap:evaluation}
-From all the implications of this work, probably the evaluation is the one that contributes novelty to the task of automatic harmonic analysis.
+From all the implications of this work, probably the evaluation is the one that contributes some novelty to the task of automatic harmonic analysis.
 
 % If one reviews the works of automatic harmonic analysis, since the pioneer attempt of Winograd \cite{winograd1968linguistics} until David Temperley's \cite{temperley1997algorithm}, and even the ones from Christopher Raphael \cite{raphael2003harmonic} and Pl\'acido Illescas \cite{illescas2007harmonic}, it is visible that almost none of the efforts proposes any quantitative measure of how accurate the resulting analysis is. This is easy to understand, because evaluating a harmonic analysis is very difficult, even in the case of human analysts, one could have very different answers for the same piece of music, and both could be correct. Therefore, it is understandable that researchers have not put themselves in the necessity of validating how good or bad is the roman numeral label annotated automatically.
 
@@ -53,7 +53,7 @@ Now, I will describe the process of putting together both, the manual and automa
 
 	\autoref{table:evaluation_file} provides a first glance at a fragment of an evaluation file, extracted from the first two measures of the second movement of the String Quartet Op.20 No.3.
 
-	Giving a more detailed look at the evaluation file, one can see that the time units seem to be normalized, as 6 data entries appear for each measure. There is, in fact, a normalization process of the time units.
+	The first characteristic I want to discuss about this evaluation file, is its normalization of time units.
 
   \subsection{Normalization of time units}
 
@@ -84,8 +84,6 @@ Now, I will describe the process of putting together both, the manual and automa
 	In order to avoid this and other problems related to duration, during the creation of the evaluation file, the time units of the score get normalized to the shortest note of the score.
 
 	\subsection{Finding the shortest note}
-		In order to find the shortest note, I am simply using the \emph{census} program, which is part of the \emph{Humdrum Toolkit} \cite{humdrum}.
-
 		\begin{table}[]
 		\centering
 		\begin{tabular}{ll}
@@ -116,7 +114,9 @@ Now, I will describe the process of putting together both, the manual and automa
 		\label{table:census}
 		\end{table}
 
-	Inside the \emph{KERN DATA} section in \autoref{table:census}, there is the duration of the shortest note of the humdrum score. This note duration can be used to make a new timebase for the score.
+		In order to find the shortest note, I am simply using the \emph{census} program, which is part of the \emph{Humdrum Toolkit} \cite{humdrum}.
+
+		Inside the \emph{KERN DATA} section in \autoref{table:census}, there is the duration of the shortest note of the humdrum score. This note duration can be used to make a new timebase for the score.
 
 	% Please add the following required packages to your document preamble:
 	% \usepackage{multirow}
