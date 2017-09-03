@@ -75,7 +75,7 @@ Now, I will describe the process of putting together both, the manual and automa
 
 		If the evaluation file displayed before would keep the original time units of the labels, it would look like as shown in \autoref{table:no_normalization}.
 
-		One problem that arises with the way **harm spines are appended to the scores, is that these spines do not store any explicit information about time duration. The labels are properly interpreted in the full score because they are aligned to the note values from the instruments, which do have time duration information.
+		One problem that arises with the way **harm spines are appended to the scores, is that these spines do not store any explicit information about time duration. The labels are properly interpreted in the full score because they are aligned to the note values from the **kern spines, which do have time duration information.
 
 		In order to avoid this and other problems related to duration, during the creation of the evaluation file, the time units of the score get normalized to the shortest note of the score.
 
@@ -156,30 +156,30 @@ Now, I will describe the process of putting together both, the manual and automa
 
 		As long as one root appears in one of the spines, it will be considered the "current" root, meaning that any NULL record (a record with a dot in it) is considered to be of the same root as the last one appearing in the spine.
 
-		\begin{table}[]
+		\begin{table}[tbp]
 		\centering
-		\begin{tabular}{|lll|lll|}
-		\hline
-		\multicolumn{3}{|l|}{How it is written in the file} & \multicolumn{3}{l|}{How it is interpreted in the evaluation} \\ \hline
-		\multicolumn{1}{|l|}{Time unit} & \multicolumn{1}{l|}{Harmonic root 1} & Harmonic root 2 & \multicolumn{1}{l|}{Time unit} & \multicolumn{1}{l|}{Harmonic root 1} & Harmonic root 2 \\ \hline
-		1 & . & . & 1 & . & . \\
-		2 & . & . & 2 & . & . \\
-		3 & . & . & 3 & . & . \\
-		4 & . & . & 4 & . & . \\
-		5 & . & . & 5 & . & . \\
-		6 & . & . & 6 & . & . \\
-		7 & g & . & 7 & g & . \\
-		8 & . & . & 8 & g & . \\
-		9 & a & f & 9 & a & f \\
-		10 & . & . & 10 & a & f \\
-		11 & g & . & 11 & g & f \\
-		12 & . & . & 12 & g & f \\
-		13 & c & c & 13 & c & c \\
-		14 & . & . & 14 & c & c \\
-		15 & . & g & 15 & c & g \\
-		16 & . & . & 16 & c & g \\
-		17 & g & . & 17 & g & g \\
-		18 & . & . & 18 & g & g \\ \hline
+		\begin{tabular}{l|ll|ll|}
+		\cline{2-5}
+		 & \multicolumn{2}{l|}{How it is written} & \multicolumn{2}{l|}{How it is interpreted} \\ \hline
+		\multicolumn{1}{|l|}{Time unit} & \multicolumn{1}{l|}{Root 1} & Root 2 & \multicolumn{1}{l|}{Root 1} & Root 2 \\ \hline
+		\multicolumn{1}{|l|}{1} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{2} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{3} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{4} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{5} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{6} & . & . & . & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{7} & g & . & g & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{8} & . & . & g & . \\ \cline{1-1}
+		\multicolumn{1}{|l|}{9} & a & f & a & f \\ \cline{1-1}
+		\multicolumn{1}{|l|}{10} & . & . & a & f \\ \cline{1-1}
+		\multicolumn{1}{|l|}{11} & g & . & g & f \\ \cline{1-1}
+		\multicolumn{1}{|l|}{12} & . & . & g & f \\ \cline{1-1}
+		\multicolumn{1}{|l|}{13} & c & c & c & c \\ \cline{1-1}
+		\multicolumn{1}{|l|}{14} & . & . & c & c \\ \cline{1-1}
+		\multicolumn{1}{|l|}{15} & . & g & c & g \\ \cline{1-1}
+		\multicolumn{1}{|l|}{16} & . & . & c & g \\ \cline{1-1}
+		\multicolumn{1}{|l|}{17} & g & . & g & g \\ \cline{1-1}
+		\multicolumn{1}{|l|}{18} & . & . & g & g \\ \hline
 		\end{tabular}
 		\caption{Root spines, the 2nd and 4th spines of an evaluation file}
 		\label{table:roots}
@@ -200,10 +200,10 @@ Now, I will describe the process of putting together both, the manual and automa
 
 	\subsection{Matching the roots}
 
-		\begin{table}[]
+		\begin{table}[tbp]
 		\centering
 		\begin{tabular}{llll}
-		Time unit & Harmonic root 1 & Harmonic root 2 & Match \\
+		Time unit & Root 1 & Root 2 & Match \\
 		1 & . & . & Yes \\
 		2 & . & . & Yes \\
 		3 & . & . & Yes \\
