@@ -1,22 +1,22 @@
 \chapter{Evaluation}
 \label{chap:evaluation}
-From all the implications of this work, probably the evaluation is the one that adds more value to the task of automatic harmonic analysis.
+From all the implications of this work, probably the evaluation is the one that contributes novelty to the task of automatic harmonic analysis.
 
 % If one reviews the works of automatic harmonic analysis, since the pioneer attempt of Winograd \cite{winograd1968linguistics} until David Temperley's \cite{temperley1997algorithm}, and even the ones from Christopher Raphael \cite{raphael2003harmonic} and Pl\'acido Illescas \cite{illescas2007harmonic}, it is visible that almost none of the efforts proposes any quantitative measure of how accurate the resulting analysis is. This is easy to understand, because evaluating a harmonic analysis is very difficult, even in the case of human analysts, one could have very different answers for the same piece of music, and both could be correct. Therefore, it is understandable that researchers have not put themselves in the necessity of validating how good or bad is the roman numeral label annotated automatically.
 
-During this chapter, I will introduce the evaluation process that I propose for validating how similar a manually annotated harmonic analysis stands compared to another generated automatically using the methdods explained during \autoref{chap:methodology}.
+During this chapter, I will introduce the evaluation process that I propose for validating how similar a manually annotated harmonic analysis stands compared to another generated automatically using the methods explained during \autoref{chap:methodology}.
 
 \section{After the automatic analysis}
 So far, I reviewed the implementation efforts that materialize a system of automatic harmonic analysis which takes a musical score encoded in humdrum and outputs a similar musical score with roman numeral labels in the **harm syntax appended to it.
 
 One important thing to know is that, together with the manual annotations described during \autoref{chap:dataset}, all the automatic analyses for the musical scores used in this work have been also saved in the same repository where the manual annotations are contained.
 
-This means, in summary, that the repository (\url{https://github.com/napulen/haydn_op20_harm}) where the dataset lives holds manual and automatic annotations.
+This means, in summary, that the repository (\url{https://github.com/napulen/haydn_op20_harm}) where the dataset lives holds manual and automatic annotations for the musical scores.
 
-Now, I will describe the process of putting together both, the manual and automatic harmonic analysis annotations into a single file. I call this file, the evaluation file.
+Now, I will describe the process of putting together both, the manual and automatic harmonic analysis annotations into a single file. A single file that can then be used to compare the similarity of the analyses. I call this file, the evaluation file.
 
 \section{Evaluation file}
-	The evaluation file is a valid humdrum file with 4 spines.
+	The evaluation file is a valid humdrum file with four spines.
 
 	The first pair of spines represents the roman numeral and harmonic root of the manual analysis, while the second represents the corresponding elements of the automatic analysis.
 
@@ -51,7 +51,11 @@ Now, I will describe the process of putting together both, the manual and automa
 	\label{table:evaluation_file}
 	\end{table}
 
-	\autoref{table:evaluation_file} summarizes this explanation with a fragment of an evaluation file, extracted from the first two measures of Op.20 No.3 - II.
+	\autoref{table:evaluation_file} provides a first glance at a fragment of an evaluation file, extracted from the first two measures of the second movement of the String Quartet Op.20 No.3.
+
+	Giving a more detailed look at the evaluation file, one can see that the time units seem to be normalized, as 6 data entries appear for each measure. There is, in fact, a normalization process of the time units.
+
+	For this purpose.
 
   \subsection{Generating}
   Take the manual and automatic, extract the harmonic root using harm2kern, append and filter
