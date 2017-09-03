@@ -56,26 +56,26 @@ Now, I will describe the process of putting together both, the manual and automa
 	The first characteristic I want to discuss about this evaluation file, is its normalization of time units.
 
   \subsection{Normalization of time units}
-		%
-		% \begin{table}[tbp]
-		% \centering
-		% \begin{tabular}{|c|c|c|c|c|}
-		% \hline
-		% Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
-		% \multirow{2}{*}{Anacrusis} & . & . & . & . \\ \cline{2-5}
-		%  & . & . & . & . \\ \hline
-		% \multirow{3}{*}{First measure} & i & g & . & . \\ \cline{2-5}
-		%  & iio & a & iv & f \\ \cline{2-5}
-		%  & ib & g & . & . \\ \hline
-		% \multirow{3}{*}{Second measure} & iv & c & ib & c \\ \cline{2-5}
-		%  & . & . & V7c & g \\ \cline{2-5}
-		%  & ib & g & . & . \\ \hline
-		% \end{tabular}
-		% \caption{Original time units}
-		% \label{table:no_normalization}
-		% \end{table}
-		%
-		% If the evaluation file displayed before would keep the original time units of the labels, it would look like as shown in \autoref{table:no_normalization}.
+
+		\begin{table}[tbp]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
+		\multirow{2}{*}{Anacrusis} & . & . & . & . \\ \cline{2-5}
+		 & . & . & . & . \\ \hline
+		\multirow{3}{*}{First measure} & i & g & . & . \\ \cline{2-5}
+		 & iio & a & iv & f \\ \cline{2-5}
+		 & ib & g & . & . \\ \hline
+		\multirow{3}{*}{Second measure} & iv & c & ib & c \\ \cline{2-5}
+		 & . & . & V7c & g \\ \cline{2-5}
+		 & ib & g & . & . \\ \hline
+		\end{tabular}
+		\caption{Original time units}
+		\label{table:no_normalization}
+		\end{table}
+
+		If the evaluation file displayed before would keep the original time units of the labels, it would look like as shown in \autoref{table:no_normalization}.
 
 		One problem that arises with the way **harm spines are appended to the scores, is that these spines do not store any explicit information about time duration. The labels are properly interpreted in the full score because they are aligned to the note values from the instruments, which do have time duration information.
 
@@ -110,13 +110,13 @@ Now, I will describe the process of putting together both, the manual and automa
 		Number of single barlines: & 88 \\
 		Number of double barlines: & 1
 		\end{tabular}
-		\caption{Output of the census program}
+		\caption{Census program from the Humdrum Toolkit}
 		\label{table:census}
 		\end{table}
 
 		\autoref{table:census} shows the output of the \emph{census} program for the humdrum file of the second movement of Op.20 No.3. Among the output of the \emph{KERN DATA} section, the duration of the shortest note of the humdrum score is displayed. This note duration is parsed from the output of the program and used to make a new timebase for the evaluation file.
 
-		As a matter of explanation, the string value that appears as the shortest note is in the reciprocal notation for duration. In this case, a value of "8" means the sortest note is 1/8 of a whole note, or an eight note. With this said, if this example holds a time signature of 3/4, six eight notes are expected for every measure.
+		As a matter of explanation, the string value that appears as the shortest note is in the frequently used reciprocal notation. In this case, a value of "8" means the note duration is 1/8 of a whole note, or an eight note. Basically, as this example holds a time signature of 3/4 and the shortest note is an eight note, six eight notes are expected for every measure.
 
 		% Please add the following required packages to your document preamble:
 		% \usepackage{multirow}
@@ -148,7 +148,7 @@ Now, I will describe the process of putting together both, the manual and automa
 		\label{table:normalization}
 		\end{table}
 
-		\autoref{table:normalization} shows precisely this, the normalized evaluation file to eight notes.
+		\autoref{table:normalization} shows precisely this, the normalized evaluation file, six entries per measure, each of them corresponding to an eight note, the shortest note of the music score.
 
 	\subsection{Using Humdrum-extras}
   Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
