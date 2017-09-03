@@ -59,7 +59,7 @@ Now, I will describe the process of putting together both, the manual and automa
 
 	% Please add the following required packages to your document preamble:
 	% \usepackage{multirow}
-	\begin{table}[]
+	\begin{table}[tbp]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -86,33 +86,37 @@ Now, I will describe the process of putting together both, the manual and automa
 	\subsection{Finding the shortest note}
 		In order to find the shortest note, I am simply using the \emph{census} program, which is part of the \emph{Humdrum Toolkit} \cite{humdrum}.
 
-		\begin{verbatim}
-			HUMDRUM DATA
+		\begin{table}[]
+		\centering
+		\begin{tabular}{ll}
+		HUMDRUM DATA &  \\
+		 &  \\
+		Number of data tokens: & 1780 \\
+		Number of null tokens: & 515 \\
+		Number of multiple-stops: & 1 \\
+		Number of data records: & 445 \\
+		Number of comments: & 27 \\
+		Number of interpretations: & 7 \\
+		Number of records: & 479 \\
+		 &  \\
+		KERN DATA &  \\
+		 &  \\
+		Number of note-heads: & 785 \\
+		Number of notes: & 741 \\
+		Longest note: & 2 \\
+		Shortest note: & 8 \\
+		Highest note: & ddd \\
+		Lowest note: & DD \\
+		Number of rests: & 125 \\
+		Maximum number of voices: & 5 \\
+		Number of single barlines: & 88 \\
+		Number of double barlines: & 1
+		\end{tabular}
+		\caption{Output of the census program}
+		\label{table:census}
+		\end{table}
 
-			Number of data tokens:     1780
-			Number of null tokens:     515
-			Number of multiple-stops:  1
-			Number of data records:    445
-			Number of comments:        27
-			Number of interpretations: 7
-			Number of records:         479
-
-			KERN DATA
-
-			Number of note-heads:      785
-			Number of notes:           741
-			Longest note:              2.
-			Shortest note:             8
-			Highest note:              ddd
-			Lowest note:               DD
-			Number of rests:           125
-			Maximum number of voices:  5
-			Number of single barlines: 88
-			Number of double barlines: 1
-
-		\end{verbatim}
-
-	The fourth line from the \emph{KERN DATA} section, reveals the shortest note of the humdrum score. This note duration can be used to make a new timebase for the score.
+	Inside the \emph{KERN DATA} section in \autoref{table:census}, there is the duration of the shortest note of the humdrum score. This note duration can be used to make a new timebase for the score.
 
 	% Please add the following required packages to your document preamble:
 	% \usepackage{multirow}
