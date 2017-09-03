@@ -148,21 +148,85 @@ Now, I will describe the process of putting together both, the manual and automa
 
 		\autoref{table:normalization} shows precisely this, the normalized evaluation file, six entries per measure, each of them corresponding to an eight note, the shortest note of the music score.
 
-	\subsection{Using Humdrum-extras}
-  Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
-\section{Comparing}
-	\subsection{Resolving root from **harm expression}
-  harm2kern for now
-	\subsection{Ignored annotations}
-  Ignoring 'Chr' annotations. See the issues section.
-\section{Extracting final results}
-	\subsection{Total time units}
-  The time unit represents the shortest note for that particular score. The scores are normalized to that note as the rhythmic "atom", irrelevant of its value.
-	\subsection{Percentage}
-  Every time unit is matched between manual and automatic file, the percentages are computed considering the total number of "time units" in the score, and the ones that match identically in harmonic root between both files.
-	\subsection{Distribution of degrees}
-  Additional statistics are provided of how the tonal degrees distribute per each score in both, manual and automatic files.
-	\subsection{Resolution of degree in secondary functions}
-  This is a special problem to consider when evaluating functional harmonic analysis. Every subfunction represents a diatonic degree of the current key, an uppercase diatonic degree represents the major mode tonality of that degree, a lowercase diatonic degree represents the minor mode tonality of that degree.
+\section{Computing a result from an evaluation file}
+	Once the contents and characteristics of an evaluation file have been described, now I will describe the process of comparing between both analyses contained in this file to obtain a final result of similarity between the analyses.
+
+	\subsection{Comparing root spines}
+		The comparison process could be summarized simply as counting the number of string matches between the second and fourth spines of the evaluation file, with some minor considerations.
+
+		As long as one root appears in one of the spines, it will be considered the "current" root, meaning that any NULL record (a record with a dot in it) is considered to be of the same root as the last one appearing in the spine.
+
+		\begin{table}[]
+		\centering
+		\begin{tabular}{|lll|lll|}
+		\hline
+		\multicolumn{3}{|l|}{How it is written in the file} & \multicolumn{3}{l|}{How it is interpreted in the evaluation} \\ \hline
+		\multicolumn{1}{|l|}{Time unit} & \multicolumn{1}{l|}{Harmonic root 1} & Harmonic root 2 & \multicolumn{1}{l|}{Time unit} & \multicolumn{1}{l|}{Harmonic root 1} & Harmonic root 2 \\ \hline
+		1 & . & . & 1 & . & . \\
+		2 & . & . & 2 & . & . \\
+		3 & . & . & 3 & . & . \\
+		4 & . & . & 4 & . & . \\
+		5 & . & . & 5 & . & . \\
+		6 & . & . & 6 & . & . \\
+		7 & g & . & 7 & g & . \\
+		8 & . & . & 8 & g & . \\
+		9 & a & f & 9 & a & f \\
+		10 & . & . & 10 & a & f \\
+		11 & g & . & 11 & g & f \\
+		12 & . & . & 12 & g & f \\
+		13 & c & c & 13 & c & c \\
+		14 & . & . & 14 & c & c \\
+		15 & . & g & 15 & c & g \\
+		16 & . & . & 16 & c & g \\
+		17 & g & . & 17 & g & g \\
+		18 & . & . & 18 & g & g \\ \hline
+		\end{tabular}
+		\caption{Root spines, the 2nd and 4th spines of an evaluation file}
+		\label{table:roots}
+		\end{table}
+
+		This becomes clearer from looking at \autoref{table:roots}. The \emph{NULL} records only are replaced by the last root that appeared in the spine.
+
+		After this assumption has been explained, the next step is simply comparing the roots from both analyses, row by row.
+
+	\subsection{Harmonic roots}
+		Little has been said about the **root elements corresponding to the second and fourth spines, and where have they been obtained from.
+
+		These roots are computed by using \emph{harm2kern}, another tool from Humdrum Extras \cite{humextra}. The idea behind using these \emph{root} values in the evaluation, instead of for example, a raw string comparison between the roman numerals, is to resolve the ambiguity that is caused by possible different tonalities in the harmonic analyses.
+
+		Due to the nature of roman numerals, they might be representing something similar in context, but quite different in spelling, these roots pretend to "normalize" a roman numeral label and resolve it into a single letter.
+
+		There are of course drawbacks out of this approach, the most important of them being that if the analysis considers changes in tonality during the music score, these are ignored. Ideally, this changes in tonality should not be ignored, and they comprehend an important part of the analysis, however, proposing an evaluation process that incorporates these changes in tonality is rather difficult, and it is proposed as one of the key aspects to improve in future work.
+
+	\subsection{Matching the roots}
+
+		\begin{table}[]
+		\centering
+		\begin{tabular}{llll}
+		Time unit & Harmonic root 1 & Harmonic root 2 & Match \\
+		1 & . & . & Yes \\
+		2 & . & . & Yes \\
+		3 & . & . & Yes \\
+		4 & . & . & Yes \\
+		5 & . & . & Yes \\
+		6 & . & . & Yes \\
+		7 & g & . & No \\
+		8 & g & . & No \\
+		9 & a & f & No \\
+		10 & a & f & No \\
+		11 & g & f & No \\
+		12 & g & f & No \\
+		13 & c & c & Yes \\
+		14 & c & c & Yes \\
+		15 & c & g & No \\
+		16 & c & g & No \\
+		17 & g & g & No \\
+		18 & g & g & No
+		\end{tabular}
+		\caption{My caption}
+		\label{table:matches}
+		\end{table}
+
+		\autoref{table:matches} displays the evaluation summary for the first two measures (and anacrusis) of the example shown at the beginning of the chapter.
 
 \newpage
