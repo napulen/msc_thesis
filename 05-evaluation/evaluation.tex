@@ -60,35 +60,38 @@ Now, I will describe the process of putting together both, the manual and automa
 	% \usepackage{multirow}
 	\begin{table}[]
 	\centering
-	\begin{tabular}{|c|cc|cc|}
+	\begin{tabular}{|c|c|c|c|c|}
 	\hline
 	Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
-	\multirow{7}{*}{Anacrusis} & **harm & **root & **harm & **root \\
-	 & . & . & . & . \\
-	 & . & . & . & . \\
-	 & . & . & . & . \\
-	 & . & . & . & . \\
-	 & . & . & . & . \\
+	\multirow{7}{*}{Anacrusis} & **harm & **root & **harm & **root \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
 	 & . & . & . & . \\ \hline
-	\multirow{7}{*}{First} & =1 & =1 & =1 & =1 \\
-	 & i & g & . & . \\
-	 & . & . & . & . \\
-	 & iio & a & iv & f \\
-	 & . & . & . & . \\
-	 & ib & g & . & . \\
+	\multirow{7}{*}{First} & =1 & =1 & =1 & =1 \\ \cline{2-5}
+	 & i & g & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & iio & a & iv & f \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & ib & g & . & . \\ \cline{2-5}
 	 & . & . & . & . \\ \hline
-	\multirow{7}{*}{Second} & =2 & =2 & =2 & =2 \\
-	 & iv & c & ib & c \\
-	 & . & . & . & . \\
-	 & . & . & V7c & g \\
-	 & . & . & . & . \\
-	 & ib & g & . & . \\
+	\multirow{7}{*}{Second} & =2 & =2 & =2 & =2 \\ \cline{2-5}
+	 & iv & c & ib & c \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & . & . & V7c & g \\ \cline{2-5}
+	 & . & . & . & . \\ \cline{2-5}
+	 & ib & g & . & . \\ \cline{2-5}
 	 & . & . & . & . \\ \hline
 	\end{tabular}
 	\caption{My caption}
 	\label{my-label}
 	\end{table}
-  Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
+
+	Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
+
+
 	\subsection{Using Humdrum-extras}
   Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
 \section{Comparing}
