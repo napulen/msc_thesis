@@ -82,7 +82,27 @@ Now, I will describe the process of putting together both, the manual and automa
 	 & ib & g & . & . \\ \cline{2-5}
 	 & . & . & . & . \\ \hline
 	\end{tabular}
-	\caption{My caption}
+	\caption{With time normalization}
+	\label{my-label}
+	\end{table}
+
+
+	% Please add the following required packages to your document preamble:
+	% \usepackage{multirow}
+	\begin{table}[]
+	\centering
+	\begin{tabular}{ccccc}
+	Measure & \multicolumn{2}{c}{Analysis 1} & \multicolumn{2}{c}{Analysis 2} \\
+	\multirow{2}{*}{Anacrusis} & . & . & . & . \\
+	 & . & . & . & . \\
+	\multirow{3}{*}{First measure} & i & g & . & . \\
+	 & iio & a & iv & f \\
+	 & ib & g & . & . \\
+	\multirow{3}{*}{Second measure} & iv & c & ib & c \\
+	 & . & . & V7c & g \\
+	 & ib & g & . & .
+	\end{tabular}
+	\caption{Without time normalization}
 	\label{my-label}
 	\end{table}
 
