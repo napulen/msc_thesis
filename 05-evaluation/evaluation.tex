@@ -185,22 +185,12 @@ Now, I will describe the process of putting together both, the manual and automa
 		\label{table:roots}
 		\end{table}
 
-		This becomes clearer from looking at \autoref{table:roots}. The \emph{NULL} records only are replaced by the last root that appeared in the spine.
+		This becomes clearer from looking at \autoref{table:roots}. The \emph{NULL} records are replaced by the last root that appeared in the spine.
 
 		After this assumption has been explained, the next step is simply comparing the roots from both analyses, row by row.
 
 	\subsection{Harmonic roots}
-		Little has been said about the **root elements corresponding to the second and fourth spines, and where have they been obtained from.
-
-		These roots are computed by using \emph{harm2kern}, another tool from Humdrum Extras \cite{humextra}. The idea behind using these \emph{root} values in the evaluation, instead of for example, a raw string comparison between the roman numerals, is to resolve the ambiguity that is caused by possible different tonalities in the harmonic analyses.
-
-		Due to the nature of roman numerals, they might be representing something similar in context, but quite different in spelling, these roots pretend to "normalize" a roman numeral label and resolve it into a single letter.
-
-		There are of course drawbacks out of this approach, the most important of them being that if the analysis considers changes in tonality during the music score, these are ignored. Ideally, this changes in tonality should not be ignored, and they comprehend an important part of the analysis, however, proposing an evaluation process that incorporates these changes in tonality is rather difficult, and it is proposed as one of the key aspects to improve in future work.
-
-	\subsection{Matching the roots}
-
-		\begin{table}[tbp]
+		\begin{table}[]
 		\centering
 		\begin{tabular}{llll}
 		Time unit & Root 1 & Root 2 & Match \\
@@ -223,10 +213,18 @@ Now, I will describe the process of putting together both, the manual and automa
 		17 & g & g & No \\
 		18 & g & g & No
 		\end{tabular}
-		\caption{My caption}
+		\caption{Matching the root spines from an evaluation file}
 		\label{table:matches}
 		\end{table}
 
-		\autoref{table:matches} displays the evaluation summary for the first two measures (and anacrusis) of the example shown at the beginning of the chapter.
+		Little has been said about the **root elements corresponding to the second and fourth spines, and where have they been obtained from.
+
+		These roots are computed by using \emph{harm2kern}, another tool from Humdrum Extras \cite{humextra}. The idea behind using these \emph{root} values in the evaluation, instead of for example, a raw string comparison between the roman numerals, is to resolve the ambiguity that is caused by possible different tonalities in the harmonic analyses.
+
+		Due to the nature of roman numerals, they might be representing something similar in context, but quite different in spelling, these roots pretend to "normalize" a roman numeral label and resolve it into a single letter.
+
+		There are of course drawbacks out of this approach, the most important of them being that if the analysis considers changes in tonality during the music score, these are ignored. Ideally, this changes in tonality should not be ignored, and they comprehend an important part of the analysis, however, proposing an evaluation process that incorporates these changes in tonality is rather difficult, and it is proposed as one of the key aspects to improve in future work.
+
+		Finally, \autoref{table:matches} displays the evaluation summary for the first two measures (and anacrusis) of the example shown at the beginning of the chapter. This example consists of 18 time units, 8 of them matching. However, only 2 of them really match due to their root value, the rest are simply the initial NULL records before the roots start to appear in the analysis.
 
 \newpage
