@@ -84,8 +84,6 @@ Now, I will describe the process of putting together both, the manual and automa
 	\subsection{Finding the shortest note}
 		In order to find the shortest note, the \emph{census} program is being used, which is part of the \emph{Humdrum Toolkit} \cite{humdrum}.
 
-		\autoref{table:census} shows the output of the \emph{census} program for the humdrum file of the second movement of Op.20 No.3. Among the output of the \emph{KERN DATA} section, the duration of the shortest note of the humdrum score is displayed. This note duration is parsed from the output of the program and used to make a new timebase for the humdrum file.
-
 		\begin{table}[]
 		\centering
 		\begin{tabular}{ll}
@@ -115,6 +113,8 @@ Now, I will describe the process of putting together both, the manual and automa
 		\caption{Output of the census program}
 		\label{table:census}
 		\end{table}
+
+		\autoref{table:census} shows the output of the \emph{census} program for the humdrum file of the second movement of Op.20 No.3. Among the output of the \emph{KERN DATA} section, the duration of the shortest note of the humdrum score is displayed. This note duration is parsed from the output of the program and used to make a new timebase for the humdrum file.
 
 		As a matter of explanation, the string value that appears as the shortest note is in the reciprocal notation for duration. In this case, a value of "8" means the sortest note is 1/8 of a whole note, or an eight note. With this said, if this example holds a time signature of 3/4, six eight notes are expected for every measure.
 
