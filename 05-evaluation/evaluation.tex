@@ -91,18 +91,19 @@ Now, I will describe the process of putting together both, the manual and automa
 	% \usepackage{multirow}
 	\begin{table}[]
 	\centering
-	\begin{tabular}{ccccc}
-	Measure & \multicolumn{2}{c}{Analysis 1} & \multicolumn{2}{c}{Analysis 2} \\
-	\multirow{2}{*}{Anacrusis} & . & . & . & . \\
-	 & . & . & . & . \\
-	\multirow{3}{*}{First measure} & i & g & . & . \\
-	 & iio & a & iv & f \\
-	 & ib & g & . & . \\
-	\multirow{3}{*}{Second measure} & iv & c & ib & c \\
-	 & . & . & V7c & g \\
-	 & ib & g & . & .
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
+	\multirow{2}{*}{Anacrusis} & . & . & . & . \\ \cline{2-5}
+	 & . & . & . & . \\ \hline
+	\multirow{3}{*}{First measure} & i & g & . & . \\ \cline{2-5}
+	 & iio & a & iv & f \\ \cline{2-5}
+	 & ib & g & . & . \\ \hline
+	\multirow{3}{*}{Second measure} & iv & c & ib & c \\ \cline{2-5}
+	 & . & . & V7c & g \\ \cline{2-5}
+	 & ib & g & . & . \\ \hline
 	\end{tabular}
-	\caption{Without time normalization}
+	\caption{My caption}
 	\label{my-label}
 	\end{table}
 
