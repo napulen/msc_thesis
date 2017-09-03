@@ -55,11 +55,39 @@ Now, I will describe the process of putting together both, the manual and automa
 
 	Giving a more detailed look at the evaluation file, one can see that the time units seem to be normalized, as 6 data entries appear for each measure. There is, in fact, a normalization process of the time units.
 
-	For this purpose.
-
-  \subsection{Generating}
-  Take the manual and automatic, extract the harmonic root using harm2kern, append and filter
-  \subsection{Rhythmic normalization}
+  \subsection{Normalization of time units}
+	% Please add the following required packages to your document preamble:
+	% \usepackage{multirow}
+	\begin{table}[]
+	\centering
+	\begin{tabular}{|c|cc|cc|}
+	\hline
+	Measure & \multicolumn{2}{c|}{Analysis 1} & \multicolumn{2}{c|}{Analysis 2} \\ \hline
+	\multirow{7}{*}{Anacrusis} & **harm & **root & **harm & **root \\
+	 & . & . & . & . \\
+	 & . & . & . & . \\
+	 & . & . & . & . \\
+	 & . & . & . & . \\
+	 & . & . & . & . \\
+	 & . & . & . & . \\ \hline
+	\multirow{7}{*}{First} & =1 & =1 & =1 & =1 \\
+	 & i & g & . & . \\
+	 & . & . & . & . \\
+	 & iio & a & iv & f \\
+	 & . & . & . & . \\
+	 & ib & g & . & . \\
+	 & . & . & . & . \\ \hline
+	\multirow{7}{*}{Second} & =2 & =2 & =2 & =2 \\
+	 & iv & c & ib & c \\
+	 & . & . & . & . \\
+	 & . & . & V7c & g \\
+	 & . & . & . & . \\
+	 & ib & g & . & . \\
+	 & . & . & . & . \\ \hline
+	\end{tabular}
+	\caption{My caption}
+	\label{my-label}
+	\end{table}
   Files are normalized to the shortest note in the score, specially needed for dealing with polyrhythms
 	\subsection{Using Humdrum-extras}
   Using harm2kern to extract the harmonic root, for now, that is enough, might change in the future.
