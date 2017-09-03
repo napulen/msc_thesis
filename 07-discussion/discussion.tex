@@ -2,15 +2,26 @@
 \label{chap:discussion}
 
 \section{Conclusions}
+Even though the baseline model for this work is the algorithm by David Temperley from 1997, a lot can be said about the process of going from a raw music score encoded in Humdrum to an analyzed version of the same score. The source code used to compute these analyses comes from different persons, different years and different programming languages (e.g.: C, C++, Perl, Bash and Python).
+
+It is easy to assume that the work of a researcher could end in providing a model to solve a problem, but much more comes into place in trying to use this model for bigger volumes of information. I believe this is the real finality of this work, to provide insight and feedback in the experience of \emph{setting up} the analysis of a considerable amount of music, using one model from 1997 in the core of all that, necessary mountain of software programs.
 
 \section{Future work}
-  \subsection{Musical domain}
-    \subsubsection{Beethoven Op.18}
-    \subsubsection{Mozart Op.10}
-  \subsection{Technological domain}
-    \subsubsection{Focusing in scores}
-    Leaving cognition behind
-    \subsubsection{Pitch-spelling}
-    Illescas has done it, but none else
+  Among the ideas that stand very clear of what can be improved, I can list two: Extending the dataset and improving the evaluation.
+  \subsection{Adding content to the dataset}
+    Joseph Haydn is a very important composer from the Classical Period, so are two other composers that could be considered his pupils: Ludwig van Beethoven and Wolfgang Amadeus Mozart. Both of them wrote string quartets, inspired in the work from Haydn. Particularly, I am interested in adding these sets of string quartets to the dataset.
+    \begin{itemize}
+      \item Beethoven's Six String Quartets Op.18.
+      \item Mozart's Six String Quartets Op.10.
+  Each of this opus contains 6 string quartets, similar to the Op.20 of Joseph Haydn used for this work. Both of them stand relevant in the history of the string quartet.
+
+  \subsection{Improved evaluation}
+    I mentioned the process I followed for "normalizing" the roman numeral labels during the evaluation process, and the drawbacks of this approach.
+
+    During this work, I have been constructing a parser of **harm expressions based on regular expressions. This parser allows for extracting critical information out of a roman numeral label in the **harm syntax. This information is intended to be used for improving the evaluation process.
+
+    The current version of this parser is located in this repository:
+
+    \url{https://github.com/napulen/harmparser}
 
 \newpage
